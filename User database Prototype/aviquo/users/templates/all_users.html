@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Users</h1>
+
+<ul>
+  {% for x in myusers %}
+
+    <li>{{ x.firstname }} {{ x.lastname }} {{x.password}}</li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
