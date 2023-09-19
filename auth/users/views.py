@@ -2,11 +2,18 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-
+from django.template import loader
+from .models import Extracurricular
+from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
-    return render(request,"users/home.html")
+    extracurriculars = Extracurricular.objects.all().values()
+    template = loader.get_template('users/home.html')
+    context = {
+        'extracurriculars': extracurriculars,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 

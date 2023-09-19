@@ -22,7 +22,12 @@
           <a href="{% url 'login' %}">Login</a>
       {% endif %}
   </div>
+  <ul>
+  {% for x in extracurriculars %}
 
+    <li>{{ x.name }} {{ x.description }} {{x.website}}</li>
+  {% endfor %}
+  </ul>
   </body>
 </html>
 
