@@ -15,3 +15,6 @@ class Extracurricular(models.Model):
     season = models.IntegerField(null=True)
     selectivity = models.IntegerField(null=True)
     cost = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.name

@@ -1,0 +1,20 @@
+[
+    {
+      "model": "users.Extracurricular",
+      "pk": 1,
+      "fields": {
+        "name": "Test",
+        "description": "Lorem Ipsum",
+        "website":"youtube.com"
+      }
+    },
+    {
+      "model": "users.Extracurricular",
+      "pk": 2,
+      "fields": {
+        "name": "Funny cat gif",
+        "description": "funny cats jumping around",
+        "website":"youtube.com"
+      }
+    }
+  ]
