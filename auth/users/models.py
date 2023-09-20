@@ -41,11 +41,27 @@ fields = [
      'args': {'choices': models.IntegerChoices('types', 'Summer School_Year').choices, 'default': None,
               'null': True}},
     {'name': 'selectivity', 'type': 'Integer',
-     'args': {'choices': models.IntegerChoices('types', 'Less_Selective Medium_Selective Very Selective').choices, 'default': None,
+     'args': {'choices': models.IntegerChoices('types', 'Less_Selective Medium_Selective Very_Selective').choices, 'default': None,
               'null': True}},
     {'name': 'cost', 'type': 'Integer',
      'args': {'choices': models.IntegerChoices('types', 'Free_Summer_Program Paid_Summer_Program Unpaid_Internship Paid_Internship').choices, 'default': None,
               'null': True}},
+    {'name': 'Grade', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', '9 10 11 12 All_grades').choices, 'default': None,
+              'null': True}},
+    {'name': 'Location', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'USA Global').choices, 'default': None,
+              'null': True}},
+    {'name': 'Grade', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Educational_Insitution Nonprofit_Organization Business_Corporation').choices, 'default': None,
+              'null': True}},
+    {'name': 'Organization', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Club Program').choices, 'default': None,
+              'null': True}},
+
+
+
+
     # rest of code follows for the rest of fields
 ]
 
