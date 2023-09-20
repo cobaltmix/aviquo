@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 build_fields = lambda fields: {field['name']: getattr(models, field['type'] + 'Field')(**field['args']) for field in
                                fields}
