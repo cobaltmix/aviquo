@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 build_fields = lambda fields: {field['name']: getattr(models, field['type'] + 'Field')(**field['args']) for field in
                                fields}
 
+
 """
 @params
 name - the name of the variable
@@ -52,7 +53,7 @@ fields = [
     {'name': 'Location', 'type': 'Integer',
      'args': {'choices': models.IntegerChoices('types', 'USA Global').choices, 'default': None,
               'null': True}},
-    {'name': 'Grade', 'type': 'Integer',
+    {'name': 'Offered By', 'type': 'Integer',
      'args': {'choices': models.IntegerChoices('types', 'Educational_Insitution Nonprofit_Organization Business_Corporation').choices, 'default': None,
               'null': True}},
     {'name': 'Organization', 'type': 'Integer',
