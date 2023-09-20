@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-build_fields = lambda fields: {field['name']: getattr(models, field['type'] + 'Field')(**field['args']) for field in fields}
+build_fields = lambda fields: {field['name']: getattr(models, field['type'] + 'Field')(**field['args']) for field in
+                               fields}
 
 """
 @params
@@ -17,13 +17,36 @@ translates to
 name = models.CharField(max_length=255)
 """
 fields = [
-        {'name': 'name', 'type': 'Char', 'args': {'max_length' : 255}},
-        {'name': 'description', 'type': 'Text', 'args': {}},
-        {'name': 'website', 'type': 'URL', 'args': {'blank' : True}},
-        {'name': 'field', 'type': 'Integer', 'args': {'choices' : models.IntegerChoices('fields', 'STEM Liberal_Art').choices, 'default' : None, 'null' : True}},
-        {'name': 'type', 'type': 'Integer', 'args': {'choices' : models.IntegerChoices('types', 'ChoiceA ChoiceB ChoiceC').choices, 'default' : None, 'null' : True}},
-
-        #rest of code follows for the rest of fields
+    {'name': 'name', 'type': 'Char', 'args': {'max_length': 255}},
+    {'name': 'description', 'type': 'Text', 'args': {}},
+    {'name': 'website', 'type': 'URL', 'args': {'blank': True}},
+    {'name': 'field', 'type': 'Integer', 'args': {'choices': models.IntegerChoices('fields', 'Computer_Science '
+                                                                                             'Engineering '
+                                                                                             'Mathematics '
+                                                                                             'Science Medicine '
+                                                                                             'Business Law '
+                                                                                             'Politics History '
+                                                                                             'Arts Writing '
+                                                                                             'Psychology '
+                                                                                             'Environment '
+                                                                                             'Architecture').choices,
+                                                  'default': None, 'null': True}},
+    {'name': 'type', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Internship Research Program').choices, 'default': None,
+              'null': True}},
+    {'name': 'mode', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Remote In-person Hybrid').choices, 'default': None,
+              'null': True}},
+    {'name': 'season', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Summer School_Year').choices, 'default': None,
+              'null': True}},
+    {'name': 'selectivity', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Less_Selective Medium_Selective Very Selective').choices, 'default': None,
+              'null': True}},
+    {'name': 'cost', 'type': 'Integer',
+     'args': {'choices': models.IntegerChoices('types', 'Free_Summer_Program Paid_Summer_Program Unpaid_Internship Paid_Internship').choices, 'default': None,
+              'null': True}},
+    # rest of code follows for the rest of fields
 ]
 
 gen_fields = build_fields(fields)
@@ -31,13 +54,14 @@ gen_fields['__module__'] = __name__
 
 ExtracurricularReference = type('Extracurricular', (models.Model,), gen_fields)
 
-#old code is below
+
+# old code is below
 
 class OldExtracurricular(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     website = models.URLField(blank=True)
-    
+
     # Integer Fields
     field = models.IntegerField(null=True)
     type = models.IntegerField(null=True)

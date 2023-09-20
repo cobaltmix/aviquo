@@ -8,7 +8,8 @@ from .serializers import ECSSerializer
 # Create your views here.
 
 def home(request):
-    return render(request, 'users/home.html', {})
+    extracurriculars = ExtracurricularReference.objects.all().values()
+    return render(request, 'users/home.html', {extracurriculars})
 
 class SignUp(CreateView):
     form_class = UserCreationForm
