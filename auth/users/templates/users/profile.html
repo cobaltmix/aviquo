@@ -9,12 +9,12 @@
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>First Name:</strong> {{ user.first_name }}</p>
     <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-
     <h2>Edit Profile</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save Changes</button>
     </form>
+    <button onclick="window.location.href = '/home/'">Back to Home</button>
 </body>
 </html>
