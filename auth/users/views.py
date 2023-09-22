@@ -4,9 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-from .models import ExtracurricularReference
+from .models import ExtracurricularReference, AwardReference, ScholarshipReference
 from rest_framework import generics
-from .serializers import ECSSerializer
+from .serializers import ECSSerializer, AWSSerializer, SCSerializer
 from django import forms
 from django.shortcuts import render, redirect
 
@@ -47,3 +47,19 @@ class ECSCreateView(generics.CreateAPIView):
 class ECSListView(generics.ListAPIView):
     queryset = ExtracurricularReference.objects.all()
     serializer_class = ECSSerializer
+
+class AWSCreateView(generics.CreateAPIView):
+    queryset = AwardReference.objects.all()
+    serializer_class = AWSSerializer
+
+class AWSListView(generics.ListAPIView):
+    queryset = AwardReference.objects.all()
+    serializer_class = AWSSerializer
+
+class SCCreateView(generics.CreateAPIView):
+    queryset = ScholarshipReference.objects.all()
+    serializer_class = SCSerializer
+
+class SCListView(generics.ListAPIView):
+    queryset = ScholarshipReference.objects.all()
+    serializer_class = SCSerializer
