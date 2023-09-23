@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from auth.users.models import ExtracurricularReference, AwardReference, ScholarshipReference
+from users.models import ExtracurricularReference, AwardReference, ScholarshipReference
 
 
 class UserSerializer(serializers.ModelSerializer):

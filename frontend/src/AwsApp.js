@@ -25,7 +25,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/home/AWS")
+      .get("/api/AWS")
       .then((res) => this.setState({ Awss: res.data }))
       .catch((err) => console.log(err));
   };
@@ -45,7 +45,7 @@ class App extends Component {
     // Send a PUT request to update the Aws with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .put(`/home/AwsS/${editedAws.id}/`, editedAws)
+      .put(`/api/AWS/${editedAws.id}/`, editedAws)
       .then((res) => {
         // Handle successful edit
         console.log('Aws edited:', editedAws);

@@ -7,7 +7,7 @@ from .serializers import UserSerializer, ExtracurricularReferenceSerializer, Awa
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
-from auth.users.models import ExtracurricularReference, AwardReference, ScholarshipReference
+from users.models import ExtracurricularReference, AwardReference, ScholarshipReference
 
 
 class UserViewSet(viewsets.ModelViewSet):

@@ -25,7 +25,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/home/users")
+      .get("/api/users")
       .then((res) => this.setState({ users: res.data }))
       .catch((err) => console.log(err));
   };

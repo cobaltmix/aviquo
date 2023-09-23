@@ -25,7 +25,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/home/SC")
+      .get("/api/SC")
       .then((res) => this.setState({ SCs: res.data }))
       .catch((err) => console.log(err));
   };
@@ -45,7 +45,7 @@ class App extends Component {
     // Send a PUT request to update the SC with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .put(`/home/SCS/${editedSC.id}/`, editedSC)
+      .put(`/api/SC/${editedSC.id}/`, editedSC)
       .then((res) => {
         // Handle successful edit
         console.log('SC edited:', editedSC);

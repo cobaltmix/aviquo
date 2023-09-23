@@ -25,7 +25,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/home/ECS")
+      .get("/api/ECS")
       .then((res) => this.setState({ ECs: res.data }))
       .catch((err) => console.log(err));
   };
@@ -45,7 +45,7 @@ class App extends Component {
     // Send a PUT request to update the EC with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .put(`/home/ECS/${editedEC.id}/`, editedEC)
+      .put(`/api/ECS/${editedEC.id}/`, editedEC)
       .then((res) => {
         // Handle successful edit
         console.log('EC edited:', editedEC);
