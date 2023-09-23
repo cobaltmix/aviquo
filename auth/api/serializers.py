@@ -10,22 +10,22 @@ class BaseSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UserSerializer(BaseSerializer):
-    class Meta:
+    class Meta(BaseSerializer.Meta):
         model = User
-        fields = '__all__'
+
 
 
 class ExtracurricularReferenceSerializer(BaseSerializer):
-    class Meta:
+    class Meta(BaseSerializer.Meta):
         model = ExtracurricularReference
-        fields = '__all__'
+
 
 class AwardReferenceSerializer(BaseSerializer):
-    class Meta:
+    class Meta(BaseSerializer.Meta):
         model = AwardReference
-        fields = '__all__'
+
 
 class ScholarshipReferenceSerializer(BaseSerializer):
-    class Meta:
+    class Meta(BaseSerializer.Meta):
         model = ScholarshipReference
-        fields = '__all__'
+

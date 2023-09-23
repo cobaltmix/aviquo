@@ -9,24 +9,31 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      Awss: [
-        { id: 1, Awsname: 'john_doe', first_name: 'John', last_name: 'Doe', email: 'john@example.com' },
-        { id: 2, Awsname: 'jane_doe', first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com' },
-        // ... more Aws data
-      ],
+      AWSs: [],
+             // ... more AWS data,
       isEditModalOpen: false,
-      selectedAws: null,
+      selectedAWS: null,
     }
   }
 
   componentDidMount() {
     this.refreshList();
+    // if(this.state.AWSs.length === 0) {
+    //   console.log('here')
+    //   this.handleAddEntry({
+    //     "AWSname" : "__",
+    //     "password" : "__",
+    //     "date_joined" : "2016-12-12T12:12:00-05:00"
+    //   });
+
+    //   this.refreshList();
+    // }
   }
 
   refreshList = () => {
     axios
-      .get("/api/AWS")
-      .then((res) => this.setState({ Awss: res.data }))
+      .get("/api/AWS/")
+      .then((res) => this.setState({ AWSs: res.data }))
       .catch((err) => console.log(err));
   };
 
@@ -36,41 +43,59 @@ class App extends Component {
     }));
   };
 
-  handleEdit = (Aws) => {
-    this.setState({ selectedAws: Aws });
+  handleEdit = (AWS) => {
     this.toggleEditModal();
+    this.setState({ selectedAWS: AWS });
   };
 
-  handleSaveEdit = (editedAws) => {
-    // Send a PUT request to update the Aws with the edited data
-    // Replace the following with your actual API endpoint and logic
+  handleAddEntry = (newAWS) => {
     axios
-      .put(`/api/AWS/${editedAws.id}/`, editedAws)
+      .post(`/api/AWS/`, newAWS)
+      .then((res) => {
+        console.log(res);
+      })
+  }
+
+  handleSaveEdit = (editedAWS) => {
+    // Send a PUT request to update the AWS with the edited data
+    // Replace the following with your actual API endpoint and logic
+    console.log(editedAWS)
+    axios
+      .put(`/api/AWS/${editedAWS.id}/`, editedAWS)
       .then((res) => {
         // Handle successful edit
-        console.log('Aws edited:', editedAws);
+        console.log('AWS edited:', editedAWS);
         this.toggleEditModal();
         this.refreshList();
       })
-      .catch((err) => console.error('Error editing Aws:', err));
+      .catch((err) => console.error('Error editing AWS:', err));
+  };
+
+  handleDelete = (editedAWS) => {
+    // Send a PUT request to update the AWS with the edited data
+    // Replace the following with your actual API endpoint and logic
+    axios
+      .delete(`/api/AWS/${editedAWS.id}/`, editedAWS)
+      .then((res) => {
+        // Handle successful edit
+        console.log('AWS deleted:', editedAWS);
+        this.toggleEditModal();
+        this.refreshList();
+      })
+      .catch((err) => console.error('Error deleting AWS:', err));
   };
 
   render() {
-    const keys = this.state.Awss.length > 0 ? Object.keys(this.state.Awss[0]) : [];
-
+    const keys = this.state.AWSs.length > 0 ? Object.keys(this.state.AWSs[0]) : [];
 
     const generateColor = (index) => {
       const colors = ['#2196F3', '#4CAF50', '#FFC107', '#9C27B0', '#FF5722'];
       return colors[index % colors.length];
     };
 
-    const handleDelete = (Aws) => {
-      console.log('Delete button clicked for Aws ID:', Aws.id);
-    };
-
     return (
       <div className="body">
-        <h1>Aws Table</h1>
+        <h1>AWS Table</h1>
         <div className="body">
           <div className="table-container">
             <Table responsive className="custom-table">
@@ -85,47 +110,56 @@ class App extends Component {
                       {key}
                     </th>
                   ))}
+
                   <th className="custom-header">Edit</th>
                   <th className="custom-header">Delete</th>
                 </tr>
               </thead>
               <tbody>
-                {this.state.Awss.map((Aws, AwsIndex) => (
-                  <tr key={Aws.id}>
+                {this.state.AWSs.map((AWS, AWSIndex) => (
+                  <tr key={AWS.id}>
                     {keys.map((key, index) => (
                       <td
                         key={index}
                         className="custom-cell"
                         style={{ backgroundColor: generateColor(index) }}
                       >
-                        {Aws[key]}
+                        {AWS[key]}
                       </td>
                     ))}
+
                     <td className="custom-cell custom-cell-edit">
-                      <Button size="sm" onClick={() => this.handleEdit(Aws)}>
+                      <Button size="sm" onClick={() => this.handleEdit(AWS)}>
                         Modify
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                      <Button size="sm" onClick={() => handleDelete(Aws)}>
+                      <Button size="sm" onClick={() => this.handleDelete(AWS)}>
                         Delete
                       </Button>
                     </td>
+
                   </tr>
                 ))}
+                {/* Additional row for creating a new entry */}
+                <tr>
+                  <td colSpan={keys.length + 2}>
+                    <Button size="sm" onClick={() => this.handleEdit(this.state.AWSs[0])}>
+                      Create New
+                    </Button>
+                  </td>
+                </tr>
               </tbody>
             </Table>
-
-
           </div>
-          {this.state.selectedEC && (
-          <EditModal
-            isOpen={this.state.isEditModalOpen}
-            toggle={this.toggleEditModal}
-            Aws={this.state.selectedAws}
-            onSave={this.handleSaveEdit}
-          />
-        )}
+          {this.state.selectedAWS && (
+            <EditModal
+              isOpen={this.state.isEditModalOpen}
+              toggle={this.toggleEditModal}
+              AWS={this.state.selectedAWS}
+              onSave={this.handleSaveEdit}
+            />
+          )}
         </div>
       </div>
     );
@@ -133,8 +167,8 @@ class App extends Component {
 
 
 
-}
 
+}
 // function App() {
 //   return (
 //     <div className="App">
