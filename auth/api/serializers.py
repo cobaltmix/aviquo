@@ -1,13 +1,17 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from users.models import ExtracurricularReference, AwardReference
+from users.models import ExtracurricularReference
 
-class UserSerializer(serializers.ModelSerializer):
+
+class BaseSerializer(serializers.ModelSerializer):
     class Meta:
+        abstract = True
+        fields = '__all__'
+
+class UserSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = User
-        fields = '__all__'
 
-class UCSerializer(serializers.ModelSerializer):
-    class Meta:
+class UCSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = ExtracurricularReference
-        fields = '__all__'
