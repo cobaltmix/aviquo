@@ -9,13 +9,13 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [
-        { id: 1, username: 'john_doe', first_name: 'John', last_name: 'Doe', email: 'john@example.com' },
-        { id: 2, username: 'jane_doe', first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com' },
-        // ... more user data
+      SCs: [
+        { id: 1, SCname: 'john_doe', first_name: 'John', last_name: 'Doe', email: 'john@example.com' },
+        { id: 2, SCname: 'jane_doe', first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com' },
+        // ... more SC data
       ],
       isEditModalOpen: false,
-      selectedUser: null,
+      selectedSC: null,
     }
   }
 
@@ -25,8 +25,8 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/home/users")
-      .then((res) => this.setState({ users: res.data }))
+      .get("/home/SC")
+      .then((res) => this.setState({ SCs: res.data }))
       .catch((err) => console.log(err));
   };
 
@@ -36,27 +36,27 @@ class App extends Component {
     }));
   };
 
-  handleEdit = (user) => {
-    this.setState({ selectedUser: user });
+  handleEdit = (SC) => {
+    this.setState({ selectedSC: SC });
     this.toggleEditModal();
   };
 
-  handleSaveEdit = (editedUser) => {
-    // Send a PUT request to update the user with the edited data
+  handleSaveEdit = (editedSC) => {
+    // Send a PUT request to update the SC with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .put(`/api/api/${editedUser.id}/`, editedUser)
+      .put(`/home/SCS/${editedSC.id}/`, editedSC)
       .then((res) => {
         // Handle successful edit
-        console.log('User edited:', editedUser);
+        console.log('SC edited:', editedSC);
         this.toggleEditModal();
         this.refreshList();
       })
-      .catch((err) => console.error('Error editing user:', err));
+      .catch((err) => console.error('Error editing SC:', err));
   };
 
   render() {
-    const keys = this.state.users.length > 0 ? Object.keys(this.state.users[0]) : [];
+    const keys = this.state.SCs.length > 0 ? Object.keys(this.state.SCs[0]) : [];
 
 
     const generateColor = (index) => {
@@ -64,13 +64,13 @@ class App extends Component {
       return colors[index % colors.length];
     };
 
-    const handleDelete = (user) => {
-      console.log('Delete button clicked for user ID:', user.id);
+    const handleDelete = (SC) => {
+      console.log('Delete button clicked for SC ID:', SC.id);
     };
 
     return (
       <div className="body">
-        <h1>User Table</h1>
+        <h1>SC Table</h1>
         <div className="body">
           <div className="table-container">
             <Table responsive className="custom-table">
@@ -90,24 +90,24 @@ class App extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map((user, userIndex) => (
-                  <tr key={user.id}>
+                {this.state.SCs.map((SC, SCIndex) => (
+                  <tr key={SC.id}>
                     {keys.map((key, index) => (
                       <td
                         key={index}
                         className="custom-cell"
                         style={{ backgroundColor: generateColor(index) }}
                       >
-                        {user[key]}
+                        {SC[key]}
                       </td>
                     ))}
                     <td className="custom-cell custom-cell-edit">
-                      <Button size="sm" onClick={() => this.handleEdit(user)}>
+                      <Button size="sm" onClick={() => this.handleEdit(SC)}>
                         Modify
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                      <Button size="sm" onClick={() => handleDelete(user)}>
+                      <Button size="sm" onClick={() => handleDelete(SC)}>
                         Delete
                       </Button>
                     </td>
@@ -116,13 +116,13 @@ class App extends Component {
               </tbody>
             </Table>
 
-            
+
           </div>
-          {this.state.selectedUser && (
+          {this.state.selectedEC && (
           <EditModal
             isOpen={this.state.isEditModalOpen}
             toggle={this.toggleEditModal}
-            user={this.state.selectedUser}
+            SC={this.state.selectedSC}
             onSave={this.handleSaveEdit}
           />
         )}

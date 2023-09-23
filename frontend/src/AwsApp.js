@@ -9,13 +9,13 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [
-        { id: 1, username: 'john_doe', first_name: 'John', last_name: 'Doe', email: 'john@example.com' },
-        { id: 2, username: 'jane_doe', first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com' },
-        // ... more user data
+      Awss: [
+        { id: 1, Awsname: 'john_doe', first_name: 'John', last_name: 'Doe', email: 'john@example.com' },
+        { id: 2, Awsname: 'jane_doe', first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com' },
+        // ... more Aws data
       ],
       isEditModalOpen: false,
-      selectedUser: null,
+      selectedAws: null,
     }
   }
 
@@ -25,8 +25,8 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/home/users")
-      .then((res) => this.setState({ users: res.data }))
+      .get("/home/AWS")
+      .then((res) => this.setState({ Awss: res.data }))
       .catch((err) => console.log(err));
   };
 
@@ -36,27 +36,27 @@ class App extends Component {
     }));
   };
 
-  handleEdit = (user) => {
-    this.setState({ selectedUser: user });
+  handleEdit = (Aws) => {
+    this.setState({ selectedAws: Aws });
     this.toggleEditModal();
   };
 
-  handleSaveEdit = (editedUser) => {
-    // Send a PUT request to update the user with the edited data
+  handleSaveEdit = (editedAws) => {
+    // Send a PUT request to update the Aws with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .put(`/api/api/${editedUser.id}/`, editedUser)
+      .put(`/home/AwsS/${editedAws.id}/`, editedAws)
       .then((res) => {
         // Handle successful edit
-        console.log('User edited:', editedUser);
+        console.log('Aws edited:', editedAws);
         this.toggleEditModal();
         this.refreshList();
       })
-      .catch((err) => console.error('Error editing user:', err));
+      .catch((err) => console.error('Error editing Aws:', err));
   };
 
   render() {
-    const keys = this.state.users.length > 0 ? Object.keys(this.state.users[0]) : [];
+    const keys = this.state.Awss.length > 0 ? Object.keys(this.state.Awss[0]) : [];
 
 
     const generateColor = (index) => {
@@ -64,13 +64,13 @@ class App extends Component {
       return colors[index % colors.length];
     };
 
-    const handleDelete = (user) => {
-      console.log('Delete button clicked for user ID:', user.id);
+    const handleDelete = (Aws) => {
+      console.log('Delete button clicked for Aws ID:', Aws.id);
     };
 
     return (
       <div className="body">
-        <h1>User Table</h1>
+        <h1>Aws Table</h1>
         <div className="body">
           <div className="table-container">
             <Table responsive className="custom-table">
@@ -90,24 +90,24 @@ class App extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.users.map((user, userIndex) => (
-                  <tr key={user.id}>
+                {this.state.Awss.map((Aws, AwsIndex) => (
+                  <tr key={Aws.id}>
                     {keys.map((key, index) => (
                       <td
                         key={index}
                         className="custom-cell"
                         style={{ backgroundColor: generateColor(index) }}
                       >
-                        {user[key]}
+                        {Aws[key]}
                       </td>
                     ))}
                     <td className="custom-cell custom-cell-edit">
-                      <Button size="sm" onClick={() => this.handleEdit(user)}>
+                      <Button size="sm" onClick={() => this.handleEdit(Aws)}>
                         Modify
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                      <Button size="sm" onClick={() => handleDelete(user)}>
+                      <Button size="sm" onClick={() => handleDelete(Aws)}>
                         Delete
                       </Button>
                     </td>
@@ -116,13 +116,13 @@ class App extends Component {
               </tbody>
             </Table>
 
-            
+
           </div>
-          {this.state.selectedUser && (
+          {this.state.selectedEC && (
           <EditModal
             isOpen={this.state.isEditModalOpen}
             toggle={this.toggleEditModal}
-            user={this.state.selectedUser}
+            Aws={this.state.selectedAws}
             onSave={this.handleSaveEdit}
           />
         )}
