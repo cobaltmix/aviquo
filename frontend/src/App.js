@@ -45,7 +45,7 @@ class App extends Component {
     // Send a PUT request to update the user with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .put(`/api/api/${editedUser.id}/`, editedUser)
+      .put(`/api/users/${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User edited:', editedUser);

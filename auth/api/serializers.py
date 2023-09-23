@@ -4,23 +4,28 @@ from django.contrib.auth.models import User
 from users.models import ExtracurricularReference, AwardReference, ScholarshipReference
 
 
-class UserSerializer(serializers.ModelSerializer):
+class BaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        abstract = True
+        fields = '__all__'
+
+class UserSerializer(BaseSerializer):
     class Meta:
         model = User
         fields = '__all__'
 
 
-class ExtracurricularReferenceSerializer(serializers.ModelSerializer):
+class ExtracurricularReferenceSerializer(BaseSerializer):
     class Meta:
         model = ExtracurricularReference
         fields = '__all__'
 
-class AwardReferenceSerializer(serializers.ModelSerializer):
+class AwardReferenceSerializer(BaseSerializer):
     class Meta:
         model = AwardReference
         fields = '__all__'
 
-class ScholarshipReferenceSerializer(serializers.ModelSerializer):
+class ScholarshipReferenceSerializer(BaseSerializer):
     class Meta:
         model = ScholarshipReference
         fields = '__all__'
