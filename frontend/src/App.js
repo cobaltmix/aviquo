@@ -9,11 +9,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [
-        { id: 1, username: 'john_doe', first_name: 'John', last_name: 'Doe', email: 'john@example.com' },
-        { id: 2, username: 'jane_doe', first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com' },
-        // ... more user data
-      ],
+      users: [],
+             // ... more user data,
       isEditModalOpen: false,
       selectedUser: null,
     }
@@ -21,6 +18,16 @@ class App extends Component {
 
   componentDidMount() {
     this.refreshList();
+    if(this.state.users.length === 0) {
+      console.log('here')
+      this.handleAddEntry({
+        "username" : "__",
+        "password" : "__",
+        "date_joined" : "2016-12-12T12:12:00-05:00"
+      });
+
+      this.refreshList();
+    }
   }
 
   refreshList = () => {
@@ -37,9 +44,17 @@ class App extends Component {
   };
 
   handleEdit = (user) => {
-    this.setState({ selectedUser: user });
     this.toggleEditModal();
+    this.setState({ selectedUser: user });
   };
+  
+  handleAddEntry = (newUser) => {
+    axios
+      .post(`/api/api/`, newUser)
+      .then((res) => {
+        console.log(res);
+      })
+  }
 
   handleSaveEdit = (editedUser) => {
     // Send a PUT request to update the user with the edited data
@@ -55,19 +70,28 @@ class App extends Component {
       .catch((err) => console.error('Error editing user:', err));
   };
 
+  handleDelete = (editedUser) => {
+    // Send a PUT request to update the user with the edited data
+    // Replace the following with your actual API endpoint and logic
+    axios
+      .delete(`/api/api/${editedUser.id}/`, editedUser)
+      .then((res) => {
+        // Handle successful edit
+        console.log('User deleted:', editedUser);
+        this.toggleEditModal();
+        this.refreshList();
+      })
+      .catch((err) => console.error('Error deleting user:', err));
+  };
+
   render() {
     const keys = this.state.users.length > 0 ? Object.keys(this.state.users[0]) : [];
-
-
+  
     const generateColor = (index) => {
       const colors = ['#2196F3', '#4CAF50', '#FFC107', '#9C27B0', '#FF5722'];
       return colors[index % colors.length];
     };
-
-    const handleDelete = (user) => {
-      console.log('Delete button clicked for user ID:', user.id);
-    };
-
+  
     return (
       <div className="body">
         <h1>User Table</h1>
@@ -85,6 +109,7 @@ class App extends Component {
                       {key}
                     </th>
                   ))}
+
                   <th className="custom-header">Edit</th>
                   <th className="custom-header">Delete</th>
                 </tr>
@@ -101,35 +126,44 @@ class App extends Component {
                         {user[key]}
                       </td>
                     ))}
+                    
                     <td className="custom-cell custom-cell-edit">
                       <Button size="sm" onClick={() => this.handleEdit(user)}>
                         Modify
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                      <Button size="sm" onClick={() => handleDelete(user)}>
+                      <Button size="sm" onClick={() => this.handleDelete(user)}>
                         Delete
                       </Button>
                     </td>
+
                   </tr>
                 ))}
+                {/* Additional row for creating a new entry */}
+                <tr>
+                  <td colSpan={keys.length + 2}>
+                    <Button size="sm" onClick={() => this.handleEdit(this.state.users[0])}>
+                      Create New
+                    </Button>
+                  </td>
+                </tr>
               </tbody>
             </Table>
-
-            
           </div>
           {this.state.selectedUser && (
-          <EditModal
-            isOpen={this.state.isEditModalOpen}
-            toggle={this.toggleEditModal}
-            user={this.state.selectedUser}
-            onSave={this.handleSaveEdit}
-          />
-        )}
+            <EditModal
+              isOpen={this.state.isEditModalOpen}
+              toggle={this.toggleEditModal}
+              user={this.state.selectedUser}
+              onSave={this.handleSaveEdit}
+            />
+          )}
         </div>
       </div>
     );
   }
+  
 
 
 

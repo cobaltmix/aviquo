@@ -5,15 +5,23 @@ class EditModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editedUser: { ...props.user },
+      editedUser: JSON.parse(JSON.stringify(props.user)),
     };
   }
+
+  // handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   this.setState((prevState) => ({
+  //     editedUser: { ...prevState.editedUser, [name]: value },
+  //   }));
+  // };
 
   handleInputChange = (e) => {
     const { name, value } = e.target;
     this.setState((prevState) => ({
       editedUser: { ...prevState.editedUser, [name]: value },
     }));
+    
   };
 
   handleSave = () => {
@@ -21,12 +29,14 @@ class EditModal extends Component {
     this.props.onSave(editedUser);
   };
 
+  
+
   render() {
-    const { isOpen, toggle, user, onSave, editedUser, handleInputChange } = this.props;
+    const [ isOpen, toggle, editedUser ] = [ this.props.isOpen, this.props.toggle, this.props.user ];
 
     return (
-      <Modal isOpen={isOpen} toggle={toggle} centered>
-        <ModalHeader toggle={toggle}>Edit User</ModalHeader>
+      <Modal isOpen={isOpen}  centered>
+        <ModalHeader>Edit User</ModalHeader>
         <ModalBody>
           <form>
             {Object.keys(editedUser).map((key, index) => (
@@ -36,15 +46,15 @@ class EditModal extends Component {
                   type="text"
                   className="form-control"
                   name={key}
-                  value={editedUser[key] !== null ? editedUser[key] : ''}
-                  onChange={handleInputChange}
+                  defaultValue={editedUser[key] !== null ? editedUser[key] : ''}
+                  onChange={this.handleInputChange}
                 />
               </div>
             ))}
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={() => onSave(editedUser)}>
+          <Button color="primary" onClick={this.handleSave}>
             Save
           </Button>
           <Button color="secondary" onClick={toggle}>
