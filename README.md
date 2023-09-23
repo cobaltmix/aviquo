@@ -10,11 +10,12 @@ To use our program, simply copy and paste into your terminal:
 
 Next, you need to install all the dependencies:
 
-	cd aviquo/auth
+	cd aviquo
 	pip install -r requirements.txt
 
 Now, we need to set up the database. Paste into your terminal:
-
+	
+	cd auth
 	python manage.py makemigrations
 	python manage.py migrate
 
@@ -37,6 +38,18 @@ Now that your superuser is set up, you can navigate to:
 
 Here, you will type in your super user name and password.
 
-You are all done! Now you can add values to your databases!
+To access the front-end portion of the app, navigate to the frontend folder with:
+
+	 cd ..
+	 cd frontend
+ 
+To setup and run development server:
+
+	 npm install
+	 npm start
+ 
+Navigate to localhost:3000. This is where changes to the database must be reflected
+
+You are all done! Now you can add values to your databases, and create the front-end using api endpoints!
 
 
