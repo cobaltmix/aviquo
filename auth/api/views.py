@@ -9,64 +9,32 @@ from .serializers import UserSerializer, ExtracurricularReferenceSerializer, Awa
 # from ..users.serializers import ECSSerializer
 from users.models import ExtracurricularReference, AwardReference, ScholarshipReference
 
+class BaseViewSet(viewsets.ModelViewSet):
+    serializer_class, model, queryset = None, None, None
+    def get_queryset(self):
+        filter_params = {key: self.request.query_params.get(key) for key in [field.name for field in self.model._meta.get_fields()]}
+        return self.model.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+   
+
+class UserViewSet(BaseViewSet):
+    model = User
     serializer_class = UserSerializer
-
-    def get_queryset(self):
-        #aggregate query params
-        filter_params = {key: self.request.query_params.get(key) for key in [field.name for field in User._meta.get_fields()]}
-
-        #eliminate nonexistent params & filter from model
-        return User.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
+    queryset = model.objects.all()
 
 
-
-class ECSListView(viewsets.ModelViewSet):
-    queryset = ExtracurricularReference.objects.all()
+class ECSViewSet(BaseViewSet):
+    model = ExtracurricularReference
     serializer_class = ExtracurricularReferenceSerializer
-
-    def get_queryset(self):
-        # aggregate query params
-        filter_params = {key: self.request.query_params.get(key) for key in
-                         [field.name for field in ExtracurricularReference._meta.get_fields()]}
-
-        # eliminate nonexistent params & filter from model
-        return ExtracurricularReference.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
+    queryset = model.objects.all()
 
 
-# class AWSCreateView(generics.CreateAPIView):
-#     queryset = AwardReference.objects.all()
-#     serializer_class = AWSSerializer
-
-
-class AWSListView(viewsets.ModelViewSet):
-    queryset = AwardReference.objects.all()
+class AWSViewSet(BaseViewSet):
+    model = AwardReference
     serializer_class = AwardReferenceSerializer
+    queryset = model.objects.all()
 
-    def get_queryset(self):
-        # aggregate query params
-        filter_params = {key: self.request.query_params.get(key) for key in
-                         [field.name for field in AwardReference._meta.get_fields()]}
-
-        # eliminate nonexistent params & filter from model
-        return AwardReference.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
-
-
-# class SCCreateView(generics.CreateAPIView):
-#     queryset = ScholarshipReference.objects.all()
-#     serializer_class = SCSerializer
-
-
-class SCCListView(viewsets.ModelViewSet):
-    queryset = ScholarshipReference.objects.all()
+class SCCViewSet(BaseViewSet):
+    model = ScholarshipReference
     serializer_class = ScholarshipReferenceSerializer
-
-    def get_queryset(self):
-        # aggregate query params
-        filter_params = {key: self.request.query_params.get(key) for key in
-                         [field.name for field in ScholarshipReference._meta.get_fields()]}
-
-        # eliminate nonexistent params & filter from model
-        return ScholarshipReference.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
+    queryset = model.objects.all()

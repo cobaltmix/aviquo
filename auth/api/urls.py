@@ -2,13 +2,13 @@
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, ECSListView, AWSListView, SCCListView
+from .views import UserViewSet, ECSViewSet, AWSViewSet, SCCViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'ECS', ECSListView)
-router.register(r'AWS', AWSListView)
-router.register(r'SC', SCCListView)
+router.register(r'ECS', ECSViewSet)
+router.register(r'AWS', AWSViewSet)
+router.register(r'SC', SCCViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]
