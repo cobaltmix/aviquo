@@ -18,21 +18,21 @@ class App extends Component {
 
   componentDidMount() {
     this.refreshList();
-    if(this.state.users.length === 0) {
-      console.log('here')
-      this.handleAddEntry({
-        "username" : "__",
-        "password" : "__",
-        "date_joined" : "2016-12-12T12:12:00-05:00"
-      });
+    // if(this.state.users.length === 0) {
+    //   console.log('here')
+    //   this.handleAddEntry({
+    //     "username" : "__",
+    //     "password" : "__",
+    //     "date_joined" : "2016-12-12T12:12:00-05:00"
+    //   });
 
-      this.refreshList();
-    }
+    //   this.refreshList();
+    // }
   }
 
   refreshList = () => {
     axios
-      .get("/home/users")
+      .get("/api/users/")
       .then((res) => this.setState({ users: res.data }))
       .catch((err) => console.log(err));
   };
@@ -50,7 +50,7 @@ class App extends Component {
   
   handleAddEntry = (newUser) => {
     axios
-      .post(`/api/api/`, newUser)
+      .post(`/api/users/`, newUser)
       .then((res) => {
         console.log(res);
       })
@@ -59,8 +59,9 @@ class App extends Component {
   handleSaveEdit = (editedUser) => {
     // Send a PUT request to update the user with the edited data
     // Replace the following with your actual API endpoint and logic
+    console.log(editedUser)
     axios
-      .put(`/api/api/${editedUser.id}/`, editedUser)
+      .put(`/api/users/${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User edited:', editedUser);
@@ -74,7 +75,7 @@ class App extends Component {
     // Send a PUT request to update the user with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .delete(`/api/api/${editedUser.id}/`, editedUser)
+      .delete(`/api/users/${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User deleted:', editedUser);
@@ -168,7 +169,6 @@ class App extends Component {
 
 
 }
-
 // function App() {
 //   return (
 //     <div className="App">
