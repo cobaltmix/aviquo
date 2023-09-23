@@ -5,6 +5,8 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from .serializers import UserSerializer
 # Create your views here.
+# from ..users.models import ExtracurricularReference
+# from ..users.serializers import ECSSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,4 +19,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
         #eliminate nonexistent params & filter from model
         return User.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
-    
+
+
+
