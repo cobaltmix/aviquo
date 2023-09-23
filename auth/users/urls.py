@@ -5,13 +5,13 @@ from .views import home, SignUp, ECSListView, profile, AWSListView, SCCListView,
 from .email_sender import CustomPasswordResetView
 from django.urls import path, include
 
-router = DefaultRouter()
-router.register(r'users', UsersListView)
-router.register(r'ECS', ECSListView)
-router.register(r'AWS', AWSListView)
-router.register(r'SC', SCCListView)
+# router = DefaultRouter()
+# router.register(r'users', UsersListView)
+# router.register(r'ECS', ECSListView)
+# router.register(r'AWS', AWSListView)
+# router.register(r'SC', SCCListView)
 urlpatterns = [
- path('', include(router.urls)),
+#  path('', include(router.urls)),
  path('', home, name = "home"),
  path("signup/", SignUp.as_view(), name="signup"),
  # path('ec/create/', ECSCreateView.as_view(), name='ecs-create'),
