@@ -53,9 +53,11 @@ class App extends Component {
     this.setState({ selectedUser: user });
   };
 
+
   handleAddEntry = (addedUser) => {
 
     console.log(addedUser)
+    
     axios
       .post(`${this.state.url}`, addedUser)
       .then((res) => {
