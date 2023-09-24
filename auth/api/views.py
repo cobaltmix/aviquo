@@ -38,3 +38,4 @@ class SCViewSet(BaseViewSet):
     model = ScholarshipReference
     serializer_class = ScholarshipReferenceSerializer
     queryset = model.objects.all()
+

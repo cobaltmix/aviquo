@@ -395,3 +395,4 @@ class Migration(migrations.Migration):
             name="Extracurricular",
         ),
     ]
+
