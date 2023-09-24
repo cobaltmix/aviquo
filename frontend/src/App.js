@@ -53,6 +53,10 @@ class App extends Component {
   };
 
   handleAddEntry = (newUser) => {
+    this.toggleEditModal();
+
+    this.setState({ selectedUser: newUser });
+    console.log('here')
     axios
       .post(this.state.url, newUser)
       .then((res) => {
