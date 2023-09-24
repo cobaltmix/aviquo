@@ -29,3 +29,4 @@ class ScholarshipReferenceSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = ScholarshipReference
 
+

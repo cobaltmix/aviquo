@@ -46,3 +46,4 @@ class Email:
             server.login(self.sender, self.password)
             print(server)
             server.sendmail(self.sender, self.receiver, self.message.as_string())
+

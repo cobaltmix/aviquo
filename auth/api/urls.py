@@ -12,3 +12,4 @@ router.register(r'SC', SCViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]
+
