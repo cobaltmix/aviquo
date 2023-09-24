@@ -51,5 +51,3 @@ To setup and run development server:
 Navigate to localhost:3000. This is where changes to the database must be reflected
 
 You are all done! Now you can add values to your databases, and create the front-end using api endpoints!
-
-
