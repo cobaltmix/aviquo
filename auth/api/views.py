@@ -34,7 +34,7 @@ class AWSViewSet(BaseViewSet):
     serializer_class = AwardReferenceSerializer
     queryset = model.objects.all()
 
-class SCCViewSet(BaseViewSet):
+class SCViewSet(BaseViewSet):
     model = ScholarshipReference
     serializer_class = ScholarshipReferenceSerializer
     queryset = model.objects.all()
