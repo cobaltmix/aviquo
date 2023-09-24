@@ -13,6 +13,7 @@ class App extends Component {
              // ... more user data,
       isEditModalOpen: false,
       selectedUser: null,
+      selectedAdd: null, 
       url: '',
       title: ''
     }
@@ -52,13 +53,42 @@ class App extends Component {
     this.setState({ selectedUser: user });
   };
 
-  handleAddEntry = (newUser) => {
+  handleAddEntry = (addedUser) => {
+    // Send a PUT request to update the user with the edited data
+    // Replace the following with your actual API endpoint and logic
+    console.log(addedUser)
     axios
-      .post(this.state.url, newUser)
+      .post(`${this.state.url}`, addedUser)
       .then((res) => {
-        console.log(res);
+        // Handle successful addition
+        console.log('User edited:', addedUser);
+        this.toggleEditModal();
+        this.refreshList();
       })
-  }
+      .catch((err) => console.error('Error adding user:', err));
+  };
+  
+  
+  handleAdd = () => {
+    console.log('dummy')
+    this.toggleEditModal();
+    this.setState({ selectedAdd: {
+    "id": "3",
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-24T10:40:32.765545-04:00",
+    "groups": [],
+    "user_permissions": [],}
+  });
+  };
+
 
   handleSaveEdit = (editedUser) => {
     // Send a PUT request to update the user with the edited data
@@ -138,7 +168,7 @@ class App extends Component {
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                      <Button size="sm" onClick={() => this.handleDelete(user)}>
+                    <Button size="sm" onClick={() => this.handleAddEntry()}>
                         Delete
                       </Button>
                     </td>
@@ -148,7 +178,7 @@ class App extends Component {
                 {/* Additional row for creating a new entry */}
                 <tr>
                   <td colSpan={keys.length + 2}>
-                    <Button size="sm" onClick={() => this.handleAddEntry(this.state.users[0])}>
+                    <Button size="sm" onClick={() => this.handleAdd(this.state.users[0])}>
                       Create New
                     </Button>
                   </td>
@@ -162,6 +192,14 @@ class App extends Component {
               toggle={this.toggleEditModal}
               user={this.state.selectedUser}
               onSave={this.handleSaveEdit}
+            />
+          )}
+          {this.state.selectedAdd && (
+            <EditModal
+              isOpen={this.state.isEditModalOpen}
+              toggle={this.toggleEditModal}
+              user={this.state.selectedAdd}
+              onSave={this.handleAddEntry}
             />
           )}
         </div>
