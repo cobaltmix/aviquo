@@ -54,8 +54,7 @@ class App extends Component {
   };
 
   handleAddEntry = (addedUser) => {
-    // Send a PUT request to update the user with the edited data
-    // Replace the following with your actual API endpoint and logic
+
     console.log(addedUser)
     axios
       .post(`${this.state.url}`, addedUser)
