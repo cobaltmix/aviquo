@@ -66,14 +66,17 @@ class App extends Component {
         this.toggleEditModal();
         this.refreshList();
       })
-      .catch((err) => console.error('Error adding user:', err));
+      .catch((err) => alert(
+        'Fill in all required fields'
+      ));
   };
   
   
   handleAdd = () => {
     console.log('dummy')
     this.toggleEditModal();
-    this.setState({ selectedAdd: {
+    if (this.state.title == 'Users'){
+      this.setState({ selectedAdd: {
     "id": "3",
     "password": "",
     "last_login": null,
@@ -88,6 +91,28 @@ class App extends Component {
     "groups": [],
     "user_permissions": [],}
   });
+    }
+    else {
+       console.log('here')
+      this.setState({ selectedAdd: 
+        {
+    "id": 24,
+    "name": "",
+    "description": "",
+    "website": "",
+    "field": null,
+    "type": null,
+    "mode": null,
+    "season": null,
+    "selectivity": null,
+    "cost": null,
+    "grade": null,
+    "location": null,
+    "offered_by": null,
+    "category": null
+}
+      });
+    }
   };
 
 
@@ -103,7 +128,9 @@ class App extends Component {
         this.toggleEditModal();
         this.refreshList();
       })
-      .catch((err) => console.error('Error editing user:', err));
+      .catch((err) => alert(
+        'Fill in all required fields'
+      ));
   };
 
   handleDelete = (editedUser) => {
@@ -130,7 +157,7 @@ class App extends Component {
 
     return (
       <div className="body">
-        <h1>{this.state.title}</h1>
+        <h1>{this.state.title} Table</h1>
         <div className="body">
           <div className="table-container">
             <Table responsive className="custom-table">
@@ -169,7 +196,7 @@ class App extends Component {
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                    <Button size="sm" onClick={() => this.handleAddEntry()}>
+                    <Button size="sm" onClick={() => this.handleDelete(user)}>
                         Delete
                       </Button>
                     </td>

@@ -8,16 +8,16 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
     <React.StrictMode>
-    <App url='/api/users/' title='User table'/>
+    <App url='/api/users/' title='Users'/>
   </React.StrictMode>
   <React.StrictMode>
-    <App url='/api/ECS/' title='Extracurricular table'/>
+    <App url='/api/ECS/' title='Extracurricular'/>
   </React.StrictMode>
   <React.StrictMode>
-   <App url='/api/AWS/' title='Awards table'/>
+   <App url='/api/AWS/' title='Awards'/>
   </React.StrictMode>
   <React.StrictMode>
-   <App url='/api/SC/' title='Scholarship table'/>
+   <App url='/api/SC/' title='Scholarships'/>
   </React.StrictMode>
     </>
 

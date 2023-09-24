@@ -6,7 +6,10 @@ class EditModal extends Component {
     super(props);
     this.state = {
       editedUser: JSON.parse(JSON.stringify(props.user)),
+      text: props.title
     };
+    console.log(this.state.text)
+    console.log(this.state.editedUser)
   }
 
   // handleInputChange = (e) => {
@@ -36,7 +39,7 @@ class EditModal extends Component {
 
     return (
       <Modal isOpen={isOpen}  centered>
-        <ModalHeader>Edit User</ModalHeader>
+        <ModalHeader>Edit {this.state.text}</ModalHeader>
         <ModalBody>
           <form>
             {Object.keys(editedUser).map((key, index) => (
