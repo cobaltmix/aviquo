@@ -50,6 +50,13 @@ To setup and run development server:
  
 Navigate to localhost:3000. This is where changes to the database must be reflected
 
+A guide to the backend APIs:
+/api/users is the endpoint for users
+/api/ECS is the endpoint for extracurriculars
+/api/AWS is the endpoint for awards
+/api/SC is the endpoint for scholarships
+all CRUD functions have been set-up, along with middle-ware dependencies, so backend APIs can be accesed seemlessly
+
 You are all done! Now you can add values to your databases, and create the front-end using api endpoints!
 
 
