@@ -13,7 +13,11 @@ class App extends Component {
              // ... more user data,
       isEditModalOpen: false,
       selectedUser: null,
+      url: '',
+      title: ''
     }
+    this.state.url = this.props.url
+    this.state.title = this.props.title
   }
 
   componentDidMount() {
@@ -32,7 +36,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/api/users/")
+      .get(this.state.url)
       .then((res) => this.setState({ users: res.data }))
       .catch((err) => console.log(err));
   };
@@ -50,7 +54,7 @@ class App extends Component {
 
   handleAddEntry = (newUser) => {
     axios
-      .post(`/api/users/`, newUser)
+      .post(this.state.url, newUser)
       .then((res) => {
         console.log(res);
       })
@@ -61,7 +65,7 @@ class App extends Component {
     // Replace the following with your actual API endpoint and logic
     console.log(editedUser)
     axios
-      .put(`/api/users/${editedUser.id}/`, editedUser)
+      .put(`${this.state.url}${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User edited:', editedUser);
@@ -75,7 +79,7 @@ class App extends Component {
     // Send a PUT request to update the user with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .delete(`/api/users/${editedUser.id}/`, editedUser)
+      .delete(`${this.state.url}${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User deleted:', editedUser);
@@ -95,7 +99,7 @@ class App extends Component {
 
     return (
       <div className="body">
-        <h1>User Table</h1>
+        <h1>{this.state.title}</h1>
         <div className="body">
           <div className="table-container">
             <Table responsive className="custom-table">
@@ -144,7 +148,7 @@ class App extends Component {
                 {/* Additional row for creating a new entry */}
                 <tr>
                   <td colSpan={keys.length + 2}>
-                    <Button size="sm" onClick={() => this.handleEdit(this.state.users[0])}>
+                    <Button size="sm" onClick={() => this.handleAddEntry(this.state.users[0])}>
                       Create New
                     </Button>
                   </td>

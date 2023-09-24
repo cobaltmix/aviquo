@@ -2,25 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import EcApp from './EcApp'
-import AwsApp from './AwsApp'
-import SCApp from './SCApp'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
     <React.StrictMode>
-    <App />
+    <App url='/api/users/' title='User table'/>
   </React.StrictMode>
   <React.StrictMode>
-    <EcApp />
+    <App url='/api/ECS/' title='Extracurricular table'/>
   </React.StrictMode>
   <React.StrictMode>
-    <AwsApp />
+   <App url='/api/AWS/' title='Awards table'/>
   </React.StrictMode>
   <React.StrictMode>
-    <SCApp />
+   <App url='/api/SC/' title='Scholarship table'/>
   </React.StrictMode>
     </>
 
