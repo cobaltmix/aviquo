@@ -25,4 +25,3 @@ urlpatterns = [
     path('home/', include('users.urls')),
     path('api/', include('api.urls')),
 ]
-

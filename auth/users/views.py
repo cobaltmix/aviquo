@@ -63,4 +63,3 @@ class SCCreateView(generics.CreateAPIView):
 class SCCListView(generics.ListAPIView):
     queryset = ScholarshipReference.objects.all()
     serializer_class = SCSerializer
-

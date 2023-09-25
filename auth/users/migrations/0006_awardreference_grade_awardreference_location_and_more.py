@@ -71,4 +71,3 @@ class Migration(migrations.Migration):
             field=models.IntegerField(choices=[(1, 'Computer Science'), (2, 'Engineering'), (3, 'Mathematics'), (4, 'Medicine'), (5, 'Business'), (6, 'Law'), (7, 'Politics'), (8, 'History'), (9, 'Arts'), (10, 'Writing'), (11, 'Psychology'), (12, 'Environment'), (13, 'Architecture')], null=True),
         ),
     ]
-

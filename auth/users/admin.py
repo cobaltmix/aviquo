@@ -44,4 +44,3 @@ admin.site.register(ExtracurricularReference, ExtracurricularReferenceAdmin)
 admin.site.register(ScholarshipReference, ScholarshipReferenceAdmin)
 admin.site.register(AwardReference, AwardReferenceAdmin)
 admin.site
-

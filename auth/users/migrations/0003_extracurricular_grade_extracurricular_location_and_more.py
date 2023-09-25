@@ -36,4 +36,3 @@ class Migration(migrations.Migration):
             field=models.IntegerField(choices=[(1, 'Less Selective'), (2, 'Medium Selective'), (3, 'Very Selective')], default=None, null=True),
         ),
     ]
-

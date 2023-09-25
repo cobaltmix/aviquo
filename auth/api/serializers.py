@@ -13,19 +13,14 @@ class UserSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = User
 
-
-
 class ExtracurricularReferenceSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = ExtracurricularReference
-
 
 class AwardReferenceSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = AwardReference
 
-
 class ScholarshipReferenceSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = ScholarshipReference
-

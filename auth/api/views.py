@@ -15,19 +15,15 @@ class BaseViewSet(viewsets.ModelViewSet):
         filter_params = {key: self.request.query_params.get(key) for key in [field.name for field in self.model._meta.get_fields()]}
         return self.model.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
 
-   
-
 class UserViewSet(BaseViewSet):
     model = User
     serializer_class = UserSerializer
     queryset = model.objects.all()
 
-
 class ECSViewSet(BaseViewSet):
     model = ExtracurricularReference
     serializer_class = ExtracurricularReferenceSerializer
     queryset = model.objects.all()
-
 
 class AWSViewSet(BaseViewSet):
     model = AwardReference
@@ -38,4 +34,3 @@ class SCViewSet(BaseViewSet):
     model = ScholarshipReference
     serializer_class = ScholarshipReferenceSerializer
     queryset = model.objects.all()
-
