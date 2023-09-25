@@ -91,6 +91,18 @@ class App extends Component {
     "groups": [],
     "user_permissions": [],}
   });
+    } else if (this.state.title == 'Posts') { 
+      this.setState({
+        selectedAdd: 
+        {
+        "id": 1,
+        "username": "",
+        "topic": "",
+        "description": "",
+        "date_created": "",
+        "parent_post": null
+        }
+      })
     }
     else {
        console.log('here')
