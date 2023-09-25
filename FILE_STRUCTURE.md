@@ -1,4 +1,4 @@
-﻿# Auth
+# Auth
 
 Manage.py:
 
@@ -114,34 +114,129 @@ wsgi.py
 
 admin.py
 
-*
+* Admin models for
+  * Extracurriculars
+  * Scholarships
+  * Awards
+  * Category (only name)
 
-└── users
-    ├── __init__.py
-    ├── admin.py
-    ├── apps.py
-    ├── email_sender.py
-    ├── migrations
-    │   ├── 0001_initial.py
-    │   ├── 0002_oldextracurricular_alter_extracurricular_cost_and_more.py
-    │   ├── 0003_extracurricular_grade_extracurricular_location_and_more.py
-    │   ├── 0004_awardreference_category_extracurricularreference_and_more.py
-    │   ├── 0004_awardreference_extracurricularreference_and_more.py
-    │   ├── 0005_remove_category_grade_remove_category_location_and_more.py
-    │   ├── 0006_awardreference_grade_awardreference_location_and_more.py
-    │   ├── __init__.py
-    ├── models.py
-    ├── serializers.py
-    ├── templates
-    │   ├── accounts
-    │   │   └── custom_reset_email.html
-    │   ├── registration
-    │   │   ├── login.html
-    │   │   └── signup.html
-    │   └── users
-    │       ├── base.html
-    │       ├── home.html
-    │       └── profile.html
-    ├── tests.py
-    ├── urls.py
-    └── views.py
+apps.py
+
+* User app config:
+  * One big auto-increment
+
+email_sender.py
+
+* Uses SMTP
+* Email class:
+  * Init:
+    * Context
+    * Password
+    * Sender = pythondiscordbot88@gmail.com
+    * Reciever
+  * Create Headers:
+    * Subject
+    * From
+    * To
+  * Create body:
+    * Creates the body html
+  * Send message:
+    * Sends the message
+* Email reset:
+  * Send mail:
+   * Subject
+   * Email template
+   * Context
+   * From
+   * To
+* Password reset view:
+  * "accounts/custom_reset_email.html"
+
+models.py
+
+* Category
+  * Name - max length 255
+* Common fields
+  * Name - max length 255
+  * Description - text
+  * Website - url
+  * Category - Choice
+  * Field - Choice
+  * Type - Choice
+  * Mode - Choice
+  * Season - Choice
+  * Selectivity - Choice
+  * Cost - Choice
+  * Grade - Choice
+  * Location - Choice
+  * Offered by - Choice
+  * Everything except name and description is optional (Can be null)
+* Extracurricular, Scholarship, and Award are all commented out (common fields is better I think)
+
+serializers.py
+
+* ECS, Award, SC, User
+  * All fields, matching model.
+
+tests.py
+
+* Empty
+
+urls.py
+
+* Urls:
+  * / - Home
+  * /signup/ - signup
+  * /ec/create/ - Create EC
+  * /ec/list/ - List ECs
+  * /aws/create/ - Create AW
+  * /aws/list/ - List AWs
+  * /sc/create/ - Create SC
+  * /sc/list/ - List SCs
+  * /profile/ - Profile
+  * /password_reset/ - Pass reset
+
+views.py
+
+* Edit Profile Form
+  * Use user model
+  * Username, email, first and last name
+* Profile page
+  * Login needed
+  * Post - edit profile and redirect to /profile/
+  * Get - get form and show profile
+* Sign up
+  * Render sign up form
+* EC/AW/SC Create/List - Rest framework query add/list
+
+## Migrations
+
+* Auto generated Django stuff
+
+## Templates
+
+### Accounts
+
+custom\_reset\_email.html
+* Reset email template
+
+### Registration
+
+login.html
+* Login template
+
+signup.html
+* Signup template
+
+### Users
+
+base.html
+* Base html, content that is pink
+
+home.html
+* Home page
+
+profile.html
+* Profile info and editing
+
+# **Add more stuff as you please**

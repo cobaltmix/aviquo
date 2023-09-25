@@ -9,18 +9,6 @@ from django.contrib.auth.forms import PasswordResetForm
 
 from django.template.loader import render_to_string
 
-class EmailPasswordResetForm(PasswordResetForm):
-    def send_mail(_, subject_template_name, email_template_name, context, from_email, to_email, *args, **kwargs):
-        e = Email(to_email)
-        e.createHeaders('Password Reset Link')
-        e.createBody(render_to_string(email_template_name, context))
-        e.sendMessage()
-
-
-class CustomPasswordResetView(PasswordResetView):
-    email_template_name = 'accounts/custom_reset_email.html'
-    form_class = EmailPasswordResetForm
-
 class Email:
     def __init__(self, receiver):
         self.ctx = ssl.create_default_context()
@@ -31,7 +19,7 @@ class Email:
     def createHeaders(self, subject):
         self.message = MIMEMultipart("alternative")
         self.message["Subject"] = subject
-        self.message["From"] = "Aviquo" 
+        self.message["From"] = "Aviquo"
         self.message["To"] = self.receiver
 
     #order is server invite link, dashboard link (wrapped of course)
@@ -46,3 +34,15 @@ class Email:
             server.login(self.sender, self.password)
             print(server)
             server.sendmail(self.sender, self.receiver, self.message.as_string())
+
+
+class EmailPasswordResetForm(PasswordResetForm):
+    def send_mail(_, subject_template_name, email_template_name, context, from_email, to_email, *args, **kwargs):
+        e = Email(to_email)
+        e.createHeaders('Password Reset Link')
+        e.createBody(render_to_string(email_template_name, context))
+        e.sendMessage()
+
+class CustomPasswordResetView(PasswordResetView):
+    email_template_name = 'accounts/custom_reset_email.html'
+    form_class = EmailPasswordResetForm
