@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ExtracurricularReference, ScholarshipReference, AwardReference, Category
+from .models import ExtracurricularReference, ScholarshipReference, AwardReference, Category, Forum
 
 # Define custom admin classes for each model
 class ExtracurricularReferenceAdmin(admin.ModelAdmin):
@@ -43,4 +43,5 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(ExtracurricularReference, ExtracurricularReferenceAdmin)
 admin.site.register(ScholarshipReference, ScholarshipReferenceAdmin)
 admin.site.register(AwardReference, AwardReferenceAdmin)
-admin.site
+admin.site.register(Forum)
+

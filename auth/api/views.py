@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
 from django.db.models.fields import Field
+from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.response import Response
-from .serializers import UserSerializer, ExtracurricularReferenceSerializer, AwardReferenceSerializer, ScholarshipReferenceSerializer
+from .serializers import UserSerializer, ExtracurricularReferenceSerializer, AwardReferenceSerializer, ScholarshipReferenceSerializer, ForumSerializer
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
-from users.models import ExtracurricularReference, AwardReference, ScholarshipReference
+from users.models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum 
 
 class BaseViewSet(viewsets.ModelViewSet):
     serializer_class, model, queryset = None, None, None
@@ -37,4 +37,9 @@ class AWSViewSet(BaseViewSet):
 class SCViewSet(BaseViewSet):
     model = ScholarshipReference
     serializer_class = ScholarshipReferenceSerializer
+    queryset = model.objects.all()
+
+class ForumViewSet(BaseViewSet):
+    model = Forum
+    serializer_class = ForumSerializer
     queryset = model.objects.all()

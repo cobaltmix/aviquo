@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
 
-from users.models import ExtracurricularReference, AwardReference, ScholarshipReference
+from django.contrib.auth.models import User
+from users.models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum
 
 
 class BaseSerializer(serializers.ModelSerializer):
@@ -29,3 +29,6 @@ class ScholarshipReferenceSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = ScholarshipReference
 
+class ForumSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
+        model = Forum
