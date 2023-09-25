@@ -35,11 +35,19 @@ def profile(request):
 
     return render(request, 'users/profile.html', {'user': user, 'form': form})
 
+
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True)  # Make the email field required
+
+    class Meta:
+        model = User
+        fields = UserCreationForm.Meta.fields + ('email',)
+
 class SignUp(CreateView):
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
-
 
 class ForumView(generics.CreateAPIView):
     queryset = Forum.objects.all()
