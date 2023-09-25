@@ -73,7 +73,7 @@ class Forum(models.Model):
     topic= models.CharField(max_length=300)
     description = models.CharField(max_length=1000,blank=True)
     date_created=models.DateTimeField(auto_now_add=True,null=True)
-    
+    parent_post = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.topic)
+        return str(self.id)
  
