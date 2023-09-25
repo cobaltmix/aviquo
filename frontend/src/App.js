@@ -13,7 +13,12 @@ class App extends Component {
              // ... more user data,
       isEditModalOpen: false,
       selectedUser: null,
+      selectedAdd: null, 
+      url: '',
+      title: ''
     }
+    this.state.url = this.props.url
+    this.state.title = this.props.title
   }
 
   componentDidMount() {
@@ -32,7 +37,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-      .get("/api/users/")
+      .get(this.state.url)
       .then((res) => this.setState({ users: res.data }))
       .catch((err) => console.log(err));
   };
@@ -48,34 +53,91 @@ class App extends Component {
     this.setState({ selectedUser: user });
   };
 
-  handleAddEntry = (newUser) => {
+
+  handleAddEntry = (addedUser) => {
+
+    console.log(addedUser)
+    
     axios
-      .post(`/api/users/`, newUser)
+      .post(`${this.state.url}`, addedUser)
       .then((res) => {
-        console.log(res);
+        // Handle successful addition
+        console.log('User edited:', addedUser);
+        this.toggleEditModal();
+        this.refreshList();
       })
-  }
+      .catch((err) => alert(
+        'Fill in all required fields'
+      ));
+  };
+  
+  
+  handleAdd = () => {
+    console.log('dummy')
+    this.toggleEditModal();
+    if (this.state.title == 'Users'){
+      this.setState({ selectedAdd: {
+    "id": "3",
+    "password": "",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-24T10:40:32.765545-04:00",
+    "groups": [],
+    "user_permissions": [],}
+  });
+    }
+    else {
+       console.log('here')
+      this.setState({ selectedAdd: 
+        {
+    "id": 24,
+    "name": "",
+    "description": "",
+    "website": "",
+    "field": null,
+    "type": null,
+    "mode": null,
+    "season": null,
+    "selectivity": null,
+    "cost": null,
+    "grade": null,
+    "location": null,
+    "offered_by": null,
+    "category": null
+}
+      });
+    }
+  };
+
 
   handleSaveEdit = (editedUser) => {
     // Send a PUT request to update the user with the edited data
     // Replace the following with your actual API endpoint and logic
     console.log(editedUser)
     axios
-      .put(`/api/users/${editedUser.id}/`, editedUser)
+      .put(`${this.state.url}${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User edited:', editedUser);
         this.toggleEditModal();
         this.refreshList();
       })
-      .catch((err) => console.error('Error editing user:', err));
+      .catch((err) => alert(
+        'Fill in all required fields'
+      ));
   };
 
   handleDelete = (editedUser) => {
     // Send a PUT request to update the user with the edited data
     // Replace the following with your actual API endpoint and logic
     axios
-      .delete(`/api/users/${editedUser.id}/`, editedUser)
+      .delete(`${this.state.url}${editedUser.id}/`, editedUser)
       .then((res) => {
         // Handle successful edit
         console.log('User deleted:', editedUser);
@@ -95,7 +157,7 @@ class App extends Component {
 
     return (
       <div className="body">
-        <h1>User Table</h1>
+        <h1>{this.state.title} Table</h1>
         <div className="body">
           <div className="table-container">
             <Table responsive className="custom-table">
@@ -134,7 +196,7 @@ class App extends Component {
                       </Button>
                     </td>
                     <td className="custom-cell custom-cell-delete">
-                      <Button size="sm" onClick={() => this.handleDelete(user)}>
+                    <Button size="sm" onClick={() => this.handleDelete(user)}>
                         Delete
                       </Button>
                     </td>
@@ -144,7 +206,7 @@ class App extends Component {
                 {/* Additional row for creating a new entry */}
                 <tr>
                   <td colSpan={keys.length + 2}>
-                    <Button size="sm" onClick={() => this.handleEdit(this.state.users[0])}>
+                    <Button size="sm" onClick={() => this.handleAdd(this.state.users[0])}>
                       Create New
                     </Button>
                   </td>
@@ -158,6 +220,14 @@ class App extends Component {
               toggle={this.toggleEditModal}
               user={this.state.selectedUser}
               onSave={this.handleSaveEdit}
+            />
+          )}
+          {this.state.selectedAdd && (
+            <EditModal
+              isOpen={this.state.isEditModalOpen}
+              toggle={this.toggleEditModal}
+              user={this.state.selectedAdd}
+              onSave={this.handleAddEntry}
             />
           )}
         </div>
