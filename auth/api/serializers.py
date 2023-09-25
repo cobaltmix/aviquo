@@ -13,7 +13,7 @@ class BaseSerializer(serializers.ModelSerializer):
 class UserSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
         model = User
-
+      
 
 
 class ExtracurricularReferenceSerializer(BaseSerializer):
