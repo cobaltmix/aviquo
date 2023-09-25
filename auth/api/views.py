@@ -8,6 +8,8 @@ from .serializers import UserSerializer, ExtracurricularReferenceSerializer, Awa
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
 from users.models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum 
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class BaseViewSet(viewsets.ModelViewSet):
     serializer_class, model, queryset = None, None, None

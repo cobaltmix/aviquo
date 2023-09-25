@@ -8,6 +8,8 @@ from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth.forms import PasswordResetForm
 
 from django.template.loader import render_to_string
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 class EmailPasswordResetForm(PasswordResetForm):
     def send_mail(_, subject_template_name, email_template_name, context, from_email, to_email, *args, **kwargs):

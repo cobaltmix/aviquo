@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import home, SignUp, ECSCreateView, ECSListView, profile, AWSCreateView, AWSListView, SCCreateView, SCCListView, ForumView
 from .email_sender import CustomPasswordResetView
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 urlpatterns = [
  path('', home, name = "home"),
  path("signup/", SignUp.as_view(), name="signup"),

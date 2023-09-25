@@ -3,6 +3,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import UserViewSet, ECSViewSet, AWSViewSet, SCViewSet, ForumViewSet
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)

@@ -10,6 +10,8 @@ from .serializers import ECSSerializer, AWSSerializer, SCSerializer, ForumSerial
 from django import forms
 from django.shortcuts import render, redirect
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 class EditProfileForm(forms.ModelForm):
