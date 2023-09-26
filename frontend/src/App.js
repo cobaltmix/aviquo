@@ -103,6 +103,15 @@ class App extends Component {
         "parent_post": null
         }
       })
+    } else if (this.state.title == 'Opportunities') {
+      this.setState({ selectedAdd: 
+        {
+    "id": 24,
+        "name": "",
+        "description": "",
+        "tags": []
+      }
+      });
     }
     else {
        console.log('here')
@@ -122,7 +131,7 @@ class App extends Component {
     "location": null,
     "offered_by": null,
     "category": null
-}
+      }
       });
     }
   };

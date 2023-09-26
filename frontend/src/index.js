@@ -22,6 +22,9 @@ root.render(
   <React.StrictMode>
    <App url='/api/Forum/' title='Posts'/>
   </React.StrictMode>
+  <React.StrictMode>
+   <App url='/api/Opportunity/' title='Opportunities'/>
+  </React.StrictMode>  
     </>
 
 );
