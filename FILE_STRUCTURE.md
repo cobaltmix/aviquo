@@ -31,6 +31,7 @@ serializers.py
 * Extracurricular
 * Award
 * Scholarship
+* Forum
 
 tests.py
 
@@ -45,7 +46,10 @@ urls.py
     * /ECS/ - ECSViewSet (extracurriculars)
     * /AWS/ - AWSViewSet (awards)
     * /SC/ - SCCViewSet (scholarships)
+    * /Forum/ - ForumViewSet
   * Generated from the router
+  * /register/ - Register View
+  * /login/ - Login View
 
 views.py
 
@@ -57,6 +61,14 @@ views.py
   * Award
     * Show all data
   * Scholarship
+    * Show all data
+  * User Registration
+    * Validate form and create user
+  * User Login
+    * Check form
+    * Login
+    * Return token
+  * Forum
     * Show all data
 
 ### Auth/Api/Migrations
@@ -86,19 +98,21 @@ settings.py
 * Middleware
 * Main url config = auth.urls.py
 * Wsgi app is auth.wsgi.application
+* Custom user
 * Password validators
 * Language
 * Time zone
 * Static url: "static/"
 * Primary auto field: Big auto increment
 * Whitelist: localhost:3000
-
+ 
 urls.py
 
 * "/admin" - Default django admin
 * "/accounts" - Default django accounts
 * "/accounts" - users.urls
 * "/home" - users.urls
+* "/" - users.urls
 * "/api" - api.urls
 
 wsgi.py
@@ -119,6 +133,7 @@ admin.py
   * Scholarships
   * Awards
   * Category (only name)
+  * Forum
 
 apps.py
 
@@ -154,6 +169,9 @@ email_sender.py
 
 models.py
 
+* Custom User
+  * User
+  * Bio
 * Category
   * Name - max length 255
 * Common fields
@@ -172,10 +190,16 @@ models.py
   * Offered by - Choice
   * Everything except name and description is optional (Can be null)
 * Extracurricular, Scholarship, and Award are all commented out (common fields is better I think)
+* Forum
+  * Username Char(200)
+  * Topic Char(300)
+  * Description Char(1000)
+  * Date Created
+  * Parent Post
 
 serializers.py
 
-* ECS, Award, SC, User
+* ECS, Award, SC, User, Forum
   * All fields, matching model.
 
 tests.py
@@ -195,9 +219,13 @@ urls.py
   * /sc/list/ - List SCs
   * /profile/ - Profile
   * /password_reset/ - Pass reset
+  * /forum/ - Forum
 
 views.py
 
+* Custom User Creation Form
+  * Default Fields
+  * Email
 * Edit Profile Form
   * Use user model
   * Username, email, first and last name
@@ -208,6 +236,8 @@ views.py
 * Sign up
   * Render sign up form
 * EC/AW/SC Create/List - Rest framework query add/list
+* Forum View
+  * All values
 
 ## Migrations
 
