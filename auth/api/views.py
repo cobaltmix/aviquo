@@ -54,12 +54,10 @@ class UserViewSet(BaseViewSet):
     serializer_class = UserSerializer
     queryset = model.objects.all()
 
-
 class ECSViewSet(BaseViewSet):
     model = ExtracurricularReference
     serializer_class = ExtracurricularReferenceSerializer
     queryset = model.objects.all()
-
 
 class AWSViewSet(BaseViewSet):
     model = AwardReference

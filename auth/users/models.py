@@ -67,7 +67,6 @@ class AwardReference(CommonFields):
 
 class ScholarshipReference(CommonFields):
     pass
-    
 
 #parent model
 class Forum(models.Model):
@@ -78,7 +77,6 @@ class Forum(models.Model):
     parent_post = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.id)
- 
 
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -95,3 +93,4 @@ class Opportunity(models.Model):
     tags = models.ManyToManyField(Tag, default={})
     def __str__(self):
         return str(self.id)
+
