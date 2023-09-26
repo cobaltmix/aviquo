@@ -113,27 +113,7 @@ class App extends Component {
       }
       });
     }
-    else {
-       console.log('here')
-      this.setState({ selectedAdd: 
-        {
-    "id": 24,
-    "name": "",
-    "description": "",
-    "website": "",
-    "field": null,
-    "type": null,
-    "mode": null,
-    "season": null,
-    "selectivity": null,
-    "cost": null,
-    "grade": null,
-    "location": null,
-    "offered_by": null,
-    "category": null
-      }
-      });
-    }
+    
   };
 
 
