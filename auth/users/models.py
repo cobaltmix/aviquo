@@ -77,3 +77,20 @@ class Forum(models.Model):
     parent_post = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.id)
+
+class Tag(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return str(self.id)
+    
+class Opportunity(models.Model):
+    name = models.CharField(max_length=200, default="hi")
+    description = models.CharField(max_length=300)
+    class Meta:
+        managed  = True
+        db_table = 'users_opportunity'
+    tags = models.ManyToManyField(Tag, default={})
+    def __str__(self):
+        return str(self.id)
+
