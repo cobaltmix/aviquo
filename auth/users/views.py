@@ -4,12 +4,14 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-from .models import ExtracurricularReference, AwardReference, ScholarshipReference
+from .models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum
 from rest_framework import generics
-from .serializers import ECSSerializer, AWSSerializer, SCSerializer
+from .serializers import ECSSerializer, AWSSerializer, SCSerializer, ForumSerializer
 from django import forms
 from django.shortcuts import render, redirect
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 class EditProfileForm(forms.ModelForm):
@@ -35,10 +37,23 @@ def profile(request):
 
     return render(request, 'users/profile.html', {'user': user, 'form': form})
 
+
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True)  # Make the email field required
+
+    class Meta:
+        model = User
+        fields = UserCreationForm.Meta.fields + ('email',)
+
 class SignUp(CreateView):
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
+
+class ForumView(generics.CreateAPIView):
+    queryset = Forum.objects.all()
+    serializer_class = ForumSerializer
 
 class ECSCreateView(generics.CreateAPIView):
     queryset = ExtracurricularReference.objects.all()

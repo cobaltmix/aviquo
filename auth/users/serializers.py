@@ -1,6 +1,12 @@
 from rest_framework import serializers
-from .models import ExtracurricularReference, AwardReference, ScholarshipReference
+from .models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
+class ForumSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Forum
+        fields = '__all__'
 
 class ECSSerializer(serializers.ModelSerializer):
     class Meta:
