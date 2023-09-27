@@ -8,11 +8,11 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
 
-from .serializers import UserSerializer, ExtracurricularReferenceSerializer, AwardReferenceSerializer, ScholarshipReferenceSerializer, ForumSerializer, OpportunitySerializer, TagSerializer
+from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
-from users.models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum, Opportunity, Tag 
+from users.models import Forum, Opportunity, Tag 
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -54,20 +54,7 @@ class UserViewSet(BaseViewSet):
     serializer_class = UserSerializer
     queryset = model.objects.all()
 
-class ECSViewSet(BaseViewSet):
-    model = ExtracurricularReference
-    serializer_class = ExtracurricularReferenceSerializer
-    queryset = model.objects.all()
 
-class AWSViewSet(BaseViewSet):
-    model = AwardReference
-    serializer_class = AwardReferenceSerializer
-    queryset = model.objects.all()
-
-class SCViewSet(BaseViewSet):
-    model = ScholarshipReference
-    serializer_class = ScholarshipReferenceSerializer
-    queryset = model.objects.all()
 
 class ForumViewSet(BaseViewSet):
     model = Forum

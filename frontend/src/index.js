@@ -11,17 +11,11 @@ root.render(
     <App url='/api/users/' title='Users'/>
   </React.StrictMode>
   <React.StrictMode>
-    <App url='/api/ECS/' title='Extracurricular'/>
-  </React.StrictMode>
-  <React.StrictMode>
-   <App url='/api/AWS/' title='Awards'/>
-  </React.StrictMode>
-  <React.StrictMode>
-   <App url='/api/SC/' title='Scholarships'/>
-  </React.StrictMode>
-  <React.StrictMode>
    <App url='/api/Forum/' title='Posts'/>
   </React.StrictMode>
+  <React.StrictMode>
+   <App url='/api/Opportunity/' title='Opportunities'/>
+  </React.StrictMode>  
     </>
 
 );

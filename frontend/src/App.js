@@ -103,28 +103,17 @@ class App extends Component {
         "parent_post": null
         }
       })
-    }
-    else {
-       console.log('here')
+    } else if (this.state.title == 'Opportunities') {
       this.setState({ selectedAdd: 
         {
     "id": 24,
-    "name": "",
-    "description": "",
-    "website": "",
-    "field": null,
-    "type": null,
-    "mode": null,
-    "season": null,
-    "selectivity": null,
-    "cost": null,
-    "grade": null,
-    "location": null,
-    "offered_by": null,
-    "category": null
-}
+        "name": "",
+        "description": "",
+        "tags": []
+      }
       });
     }
+    
   };
 
 

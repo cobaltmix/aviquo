@@ -4,9 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-from .models import ExtracurricularReference, AwardReference, ScholarshipReference, Forum
+from .models import Opportunity, Forum
 from rest_framework import generics
-from .serializers import ECSSerializer, AWSSerializer, SCSerializer, ForumSerializer
+from .serializers import OpportunitySerializer, ForumSerializer
 from django import forms
 from django.shortcuts import render, redirect
 
@@ -55,26 +55,6 @@ class ForumView(generics.CreateAPIView):
     queryset = Forum.objects.all()
     serializer_class = ForumSerializer
 
-class ECSCreateView(generics.CreateAPIView):
-    queryset = ExtracurricularReference.objects.all()
-    serializer_class = ECSSerializer
-
-class ECSListView(generics.ListAPIView):
-    queryset = ExtracurricularReference.objects.all()
-    serializer_class = ECSSerializer
-
-class AWSCreateView(generics.CreateAPIView):
-    queryset = AwardReference.objects.all()
-    serializer_class = AWSSerializer
-
-class AWSListView(generics.ListAPIView):
-    queryset = AwardReference.objects.all()
-    serializer_class = AWSSerializer
-
-class SCCreateView(generics.CreateAPIView):
-    queryset = ScholarshipReference.objects.all()
-    serializer_class = SCSerializer
-
-class SCCListView(generics.ListAPIView):
-    queryset = ScholarshipReference.objects.all()
-    serializer_class = SCSerializer
+class OpportunityView(generics.CreateAPIView):
+    queryset = Opportunity.objects.all
+    serializer_class  = OpportunitySerializer
