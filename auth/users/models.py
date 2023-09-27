@@ -36,3 +36,8 @@ class Opportunity(models.Model):
     def __str__(self):
         return str(self.id)
 
+class Waitlist(models.Model):
+    email  = models.EmailField(max_length=70,blank=True,unique=True)
+    date_created=models.DateTimeField(auto_now_add=True,null=True)
+    def __str__(self):
+        return str(self.id)

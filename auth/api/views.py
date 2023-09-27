@@ -10,11 +10,11 @@ from django.contrib.auth import authenticate, login
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
-from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer, LoginSerializer
+from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer, LoginSerializer, WaitlistSerializer
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
-from users.models import Forum, Opportunity, Tag 
+from users.models import Forum, Opportunity, Tag, Waitlist
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -58,4 +58,8 @@ class OpportunityViewSet(BaseViewSet):
 class TagViewSet(BaseViewSet):
     model = Tag
     serializer_class = TagSerializer
+    queryset = model.objects.all()
+class WaitlistViewSet(BaseViewSet):
+    model = Waitlist
+    serializer_class = WaitlistSerializer
     queryset = model.objects.all()

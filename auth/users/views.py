@@ -4,9 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
-from .models import Opportunity, Forum
+from .models import Opportunity, Forum, Waitlist
 from rest_framework import generics
-from .serializers import OpportunitySerializer, ForumSerializer
+from .serializers import OpportunitySerializer, ForumSerializer, WaitlistSerializer
 from django import forms
 from django.shortcuts import render, redirect
 
@@ -58,3 +58,8 @@ class ForumView(generics.CreateAPIView):
 class OpportunityView(generics.CreateAPIView):
     queryset = Opportunity.objects.all
     serializer_class  = OpportunitySerializer
+
+class WaitlistView(generics.CreateAPIView):
+    queryset = Waitlist.objects.all
+    serializer_class  = WaitlistSerializer
+
