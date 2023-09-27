@@ -14,6 +14,12 @@ from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer,
 # from ..users.serializers import ECSSerializer
 from users.models import Forum, Opportunity, Tag 
 from django.contrib.auth import get_user_model
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework_api_key.models import APIKey
+import random
+
 User = get_user_model()
 
 class BaseViewSet(viewsets.ModelViewSet):
@@ -70,3 +76,16 @@ class TagViewSet(BaseViewSet):
     model = Tag
     serializer_class = TagSerializer
     queryset = model.objects.all()
+
+@csrf_exempt  
+def gen_api_key(request):
+    if request.headers.get('Referer') == 'http://localhost:3000/':
+        name = "demo-key-gen-" + str(random.randint(100, 20000))
+
+        _, key = APIKey.objects.create_key(name=name)
+        response_data = { 'key' : key }
+
+        return JsonResponse(response_data)
+    else:
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
+
