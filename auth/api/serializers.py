@@ -10,9 +10,17 @@ class BaseSerializer(serializers.ModelSerializer):
         abstract = True
         fields = '__all__'
 
-class UserSerializer(BaseSerializer):
-    class Meta(BaseSerializer.Meta):
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
         model = User
+        fields = ('id', 'username', 'email', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
         
 class ForumSerializer(BaseSerializer):
     class Meta(BaseSerializer.Meta):
