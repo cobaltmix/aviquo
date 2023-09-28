@@ -1,0 +1,143 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.body {
+  display: block; 
+}
+
+h1 {
+  text-align: center;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.custom-table {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  border: 1px solid #dee2e6;
+}
+
+.custom-header {
+  background-color: #343a40;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.custom-cell {
+  background-color: #ffffff;
+}
+
+.custom-header-id {
+  background-color: #2196F3;
+}
+
+.custom-header-username {
+  background-color: #4CAF50;
+}
+
+.custom-header-fname {
+  background-color: #FFC107;
+}
+
+.custom-header-lname {
+  background-color: #9C27B0;
+}
+
+.custom-header-email {
+  background-color: #FF5722;
+}
+
+.custom-header-edit {
+  background-color: #E91E63;
+}
+
+.custom-cell-delete {
+  background-color: grey;
+}
+
+.custom-cell-id {
+  background-color: #BBDEFB;
+}
+
+.custom-cell-username {
+  background-color: #C8E6C9;
+}
+
+.custom-cell-fname {
+  background-color: #FFF9C4;
+}
+
+.custom-cell-lname {
+  background-color: #E1BEE7;
+}
+
+.custom-cell-email {
+  background-color: #FFAB91;
+}
+
+.custom-cell-edit {
+  background-color: #F48FB1;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: center;
+}
+
+.custom-table th {
+  border-top: none;
+}
+
+.custom-table .btn {
+  width: 100%;
+}
+
+.custom-table .btn-primary {
+  background-color: #2196F3;
+  border: none;
+}
+
+.custom-table .btn-primary:hover {
+  background-color: #0c7cd5;
+}
