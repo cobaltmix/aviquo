@@ -11,6 +11,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
 from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer, LoginSerializer, WaitlistSerializer
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework_api_key.models import APIKey
+import random
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
@@ -63,3 +67,15 @@ class WaitlistViewSet(BaseViewSet):
     model = Waitlist
     serializer_class = WaitlistSerializer
     queryset = model.objects.all()
+    
+@csrf_exempt  
+def gen_api_key(request):
+    if request.headers.get('Referer') == 'http://localhost:3000/':
+        name = "demo-key-gen-" + str(random.randint(100, 20000))
+
+        _, key = APIKey.objects.create_key(name=name)
+        response_data = { 'key' : key }
+
+        return JsonResponse(response_data)
+    else:
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
