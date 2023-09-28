@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   font-family: inherit;
@@ -9,9 +10,11 @@
   --purple: #805c9c;
   --more-purple: #904c7c;
   --dark-purple: #402c4c;
+  --light-purple: #e6afed;
   --primary-1: #322249;
   --primary-2: #916d87;
   --primary-3: #775967;
+  --primary-4: #804c74;
 }
 
 body {
@@ -37,8 +40,10 @@ body {
     width: fit-content;
     flex-direction: column;
     justify-content: space-evenly;
-    grid-row: 1/2;
-    grid-column: 1/2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
   header #main-title h1,
   header #main-title h3 {
@@ -69,8 +74,10 @@ body {
   header #main-logo {
     justify-content: center;
     align-items: flex-start;
-    grid-row: 1/2;
-    grid-column: 2/3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
   }
   header #main-logo #main-logo-inner {
     --basis-unit: calc(30vw + 5px);
@@ -141,8 +148,10 @@ body {
   }
   header nav {
     height: 100%;
-    grid-row: 2/3;
-    grid-column: 1/3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
   header nav form {
     display: flex;
@@ -164,14 +173,14 @@ body {
   header nav form input::placeholder {
     color: var(--purple);
   }
-  header nav form input[type=text] {
+  header nav form input[type=email] {
     width: 60%;
     background-color: var(--light-pink);
     color: var(--purple);
   }
   header nav form input:hover,
   header nav form input:active,
-  header nav form input[type=text]:focus {
+  header nav form input[type=email]:focus {
     box-shadow: 0 0 4px 6px var(--primary-1);
   }
   header nav form input[type=submit] {
@@ -179,7 +188,7 @@ body {
     background-color: var(--purple);
     color: white;
   }
-  header nav form input[type=submit]:hover {
+  header nav form f input[type=submit]:hover {
     background-color: var(--light-pink);
     color: black;
     cursor: pointer;
@@ -257,8 +266,8 @@ body {
     justify-content: center;
     width: 100%;
     margin: 0;
-    padding: 15vh 0;
-    background: linear-gradient(var(--primary-3) 5%, transparent 25%), radial-gradient(#edd, var(--light-pink) 50%, var(--more-purple) 95%);
+    padding: 15vh 0 15vh;
+    background: linear-gradient(var(--primary-3) -10%, transparent 20%, transparent 80%, var(--primary-4) 110%), radial-gradient(#edd, var(--light-pink) 25%, var(--more-purple) 95%);
   }
   main article#quote-text p {
     width: fit-content;
@@ -275,6 +284,207 @@ body {
   main article#quote-text p .big-text {
     font-weight: 600;
     font-size: calc(3px + 4vw);
+  }
+  main article#introducing {
+    margin: 0;
+    margin-top: -30px;
+    background: linear-gradient(transparent 0%, var(--primary-4) 50%);
+    text-align: center;
+  }
+  main article#introducing h5 {
+    margin: 0;
+    color: #ddd;
+    font-size: 3vw;
+  }
+  main article#introducing h2 {
+    margin: 0;
+    color: var(--light-pink);
+    font-size: 10vw;
+  }
+  main #product-boxes {
+    background: var(--primary-4);
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+@media screen and (max-width: 600px) and (max-width: 350px) {
+  main #product-boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 600px) {
+  main #product-boxes .product-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 28%;
+    min-height: 30vh;
+    border-radius: 15px;
+    background-color: var(--less-light-pink);
+    transform: scale(1);
+    transition: transform 0.5s, background 0.5s;
+  }
+}
+@media screen and (max-width: 600px) and (max-width: 350px) {
+  main #product-boxes .product-box {
+    width: 90%;
+    margin: 10px 0 0 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  main #product-boxes .product-box h5 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: var(--more-purple);
+    font-size: 2.6vw;
+    font-weight: 700;
+    text-align: center;
+  }
+  main #product-boxes .product-box p {
+    width: 90%;
+    font-size: 2vw;
+    text-align: center;
+  }
+  main #product-boxes .product-box a {
+    width: 90%;
+    padding: 3px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: var(--more-purple);
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+@media screen and (max-width: 600px) and (max-width: 350px) {
+  main #product-boxes .product-box h5 {
+    font-size: 5vw;
+  }
+  main #product-boxes .product-box p {
+    font-size: 3.5vw;
+  }
+}
+@media screen and (max-width: 600px) and (min-width: 351px) {
+  main #product-boxes .product-box:first-child {
+    margin-left: 2vw;
+  }
+  main #product-boxes .product-box:last-child {
+    margin-right: 2vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  main #product-boxes .product-box:hover {
+    transform: scale(1.3);
+    background: var(--light-pink);
+    z-index: 100;
+  }
+  main #wip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(var(--primary-4), var(--primary-3) 80%);
+    border: 1px solid transparent;
+  }
+  main #wip h6 {
+    color: var(--light-pink);
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 4vw;
+  }
+  main #wip p {
+    margin-top: 5px;
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+  }
+  main section#discord {
+    background: linear-gradient(var(--primary-3) 20%, var(--primary-4));
+  }
+  main section#discord aside#join-our-discord {
+    position: relative;
+    left: -7.5px;
+    width: calc(100% + 15px);
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: var(--light-pink);
+    box-shadow: 0 5px 5px var(--primary-1);
+  }
+  main section#discord aside#join-our-discord h3 {
+    font-size: 8vw;
+    text-align: center;
+    color: var(--purple);
+    margin: 0;
+  }
+  main section#discord div {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  main section#discord div img {
+    width: 15vw;
+    height: 15vw;
+  }
+  main section#discord div p {
+    width: 50vw;
+    color: white;
+    font-weight: 600;
+    font-size: calc(2vw + 4px);
+  }
+  footer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid transparent;
+    background-color: var(--light-purple);
+  }
+  footer h4 {
+    width: fit-content;
+  }
+  footer h4 a {
+    color: var(--more-purple);
+  }
+  footer h4 a::before,
+  footer h4 a::after {
+    content: " • ";
+  }
+  footer #icons {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    font-size: 30px;
+  }
+  footer #icons i {
+    color: var(--dark-purple);
+  }
+  footer #bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  footer #bottom .bigger-text {
+    color: var(--more-purple);
+    font-weight: 600;
+    font-size: calc(5px + 1vw);
+  }
+  footer #bottom .smaller-text,
+  footer #bottom .smaller-text a {
+    color: var(--more-purple);
+    font-weight: 500;
+    font-size: calc(3px + 1vw);
+  }
+  footer #copy {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    color: var(--dark-purple);
+    font-size: 1.5vw;
+    text-align: center;
   }
 }
 
