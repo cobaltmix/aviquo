@@ -1,18 +1,20 @@
 from django.shortcuts import render
 from django.db.models.fields import Field
 from django.contrib.auth.models import User
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
-
-from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.views import APIView
+from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer, LoginSerializer, WaitlistSerializer
 # Create your views here.
 # from ..users.models import ExtracurricularReference
 # from ..users.serializers import ECSSerializer
-from users.models import Forum, Opportunity, Tag 
+from users.models import Forum, Opportunity, Tag, Waitlist
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -22,38 +24,25 @@ class BaseViewSet(viewsets.ModelViewSet):
         filter_params = {key: self.request.query_params.get(key) for key in [field.name for field in self.model._meta.get_fields()]}
         return self.model.objects.filter(**{k: v for k, v in filter_params.items() if v is not None})
 
-class UserRegistrationView(generics.CreateAPIView):
-    serializer_class = UserSerializer
-    permission_classes = [permissions.AllowAny]
 
-    def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            user = User.objects.get(username=serializer.data['username'])
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key})
-        return Response(serializer.errors, status=400)
-
-class UserLoginView(generics.CreateAPIView):
-    serializer_class = UserSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def post(self, request):
-        username = request.data.get('username')
-        password = request.data.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user:
-            login(request, user)
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key})
-        return Response({'detail': 'Invalid credentials'}, status=401)
 
 class UserViewSet(BaseViewSet):
     model = User
     serializer_class = UserSerializer
     queryset = model.objects.all()
 
+class RegistrationAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (permissions.AllowAny,)
+
+# Use TokenObtainPairView for login
+class LoginAPIView(TokenObtainPairView):
+    serializer_class = LoginSerializer
+
+# Use TokenRefreshView for token refresh
+class TokenRefreshAPIView(TokenRefreshView):
+    pass
 
 
 class ForumViewSet(BaseViewSet):
@@ -69,4 +58,8 @@ class OpportunityViewSet(BaseViewSet):
 class TagViewSet(BaseViewSet):
     model = Tag
     serializer_class = TagSerializer
+    queryset = model.objects.all()
+class WaitlistViewSet(BaseViewSet):
+    model = Waitlist
+    serializer_class = WaitlistSerializer
     queryset = model.objects.all()

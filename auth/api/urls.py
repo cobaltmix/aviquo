@@ -2,7 +2,7 @@
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, ForumViewSet, UserRegistrationView, UserLoginView, OpportunityViewSet, TagViewSet
+from .views import UserViewSet, ForumViewSet, OpportunityViewSet, TagViewSet, RegistrationAPIView, LoginAPIView, TokenRefreshAPIView, WaitlistViewSet
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -11,8 +11,10 @@ router.register(r'users', UserViewSet)
 router.register(r'Forum', ForumViewSet)
 router.register(r'Opportunity', OpportunityViewSet)
 router.register(r'Tag', TagViewSet)
+router.register(r'Waitlist', WaitlistViewSet)
 urlpatterns = [
     path('', include(router.urls)),
-    path('register/', UserRegistrationView.as_view(), name='user-registration'),
-    path('login/', UserLoginView.as_view(), name='user-login'),
+    path('register/', RegistrationAPIView.as_view(), name='register'),
+    path('login/', LoginAPIView.as_view(), name='token_obtain_pair'),
+    path('token-refresh/', TokenRefreshAPIView.as_view(), name='token_refresh'),
 ]
