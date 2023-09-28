@@ -16,7 +16,7 @@ $primary-3: #775967;
 $primary-4: #804c74;
 
 :root {
-    --main-title-fs: 80px;
+    --main-title-fs: 60px;
 }
 
 body {
@@ -42,6 +42,9 @@ header {
     padding-bottom: 0;
 
     border: 3px solid black;
+    border-radius: 10px;
+
+    box-shadow: 0 5px 5px 2px #AAA;
 
     h1 {
         grid-row-start: 1;
@@ -59,7 +62,7 @@ header {
         grid-row-start: 2;
         grid-column-start: 1;
 
-        font-size: 25px;
+        font-size: 20px;
         font-family: "Poppins", sans-serif;
         font-weight: 700;
 
@@ -68,7 +71,7 @@ header {
         }
 
         .h3-bigger {
-            font-size: 35px;
+            font-size: 30px;
         }
     }
 
@@ -136,10 +139,6 @@ header {
     }
 }
 
-#discord-icon {
-    width: 10vw;
-}
-
 main {
     width: 90%;
 
@@ -156,12 +155,15 @@ main {
     height: 30vh;
 
     padding: 15px;
-    margin-top: 50px;
+    margin-top: 100px;
 
     border: 3px solid black;
+    border-radius: 0 10px 10px 10px;
 
     z-index: 55;
     background-color: white;
+
+    box-shadow: 0 5px 5px 2px #AAA;
 
     figure {
         display: flex;
@@ -227,7 +229,7 @@ main {
 
     background: radial-gradient(circle, #EEE 30%, #CCC 70%);
 
-    box-shadow: 0 0 5px 10px #CCC;
+    box-shadow: 0 0 10px 5px #CCC;
 
     p {
         margin: 0;
@@ -245,4 +247,225 @@ main {
             font-size: 32px;
         }
     }
+}
+
+#introducing {
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+
+    h5 {
+        margin: 0;
+        margin-top: 20px;
+
+        font-size: 22px;
+    }
+
+    h2 {
+        margin: 0;
+        margin-top: 10px;
+
+        font-size: 62px;
+        letter-spacing: 2px;
+    }
+}
+
+#product-boxes {
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .product-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        border: 2px solid black;
+        border-radius: 10px;
+
+        padding: 30px 10px 20px;
+
+        background-color: #D0D0D0;
+        width: 26%;
+        height: 90%;
+
+        text-align: center;
+
+        box-shadow: 0 5px 4px 2px #AAA;
+
+        h5 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        a {
+            width: 60%;
+            margin: auto;
+
+            padding: 5px 10px;
+
+            border: 3px outset #999;
+            border-radius: 10px;
+
+            background-color: $less-light-pink;
+            color: black;
+
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+        }
+    }
+
+    .center-box {
+        width: 30%;
+
+        padding: 30px 20px 25px;
+
+        background-color: #EAEAEA;
+
+        h5 {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        a {
+            width: 80%;
+
+            font-size: 17px;
+            font-weight: 600;
+            padding: 10px 20px;
+        }
+    }
+}
+
+#wip {
+    margin-top: 40px;
+    text-align: center;
+
+    h6 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    p {
+        margin: 0;
+        font-size: 20px;
+    }
+}
+
+#discord {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    margin: auto;
+    margin-top: 100px;
+
+    aside {
+        text-align: center;
+        font-size: 28px;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 20px;
+
+        border: 2px solid black;
+        border-radius: 10px;
+
+        background-color: #eee;
+        box-shadow: 0 3px 5px 2px #BBB;
+
+
+        img {
+            width: 15%;
+        }
+
+        p {
+            width: 80%;
+        }
+    }
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 35px;
+    align-items: center;
+    width: 100%;
+
+    padding-top: 20px;
+    margin-top: 30px;
+
+    border-top: 4px double black;
+
+    text-align: center;
+
+    h4 {
+        grid-column-start: 1;
+        grid-row-start: 1;
+
+        font-size: 26px;
+
+        margin-top: 0;
+        margin-bottom: 10px;
+
+        a::before, a::after {
+            content: " • ";
+        }
+    }
+
+    a {
+        color: black;
+    }
+
+    #icons {
+        grid-column-start: 1;
+        grid-row-start: 2;
+
+        display: flex;
+        justify-content: space-around;
+        width: 30%;
+        margin: auto;
+
+        a {
+            font-size: 30px;
+        }
+    }
+
+    #bottom {
+        grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+
+        font-size: 17px;
+
+        p {
+            margin-top: 10px;
+        }
+    }
+}
+
+#copy {
+    font-size: 8px;
 }

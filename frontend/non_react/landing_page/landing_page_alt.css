@@ -1,10 +1,11 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   font-family: inherit;
 }
 
 :root {
-  --main-title-fs: 80px;
+  --main-title-fs: 60px;
 }
 
 body {
@@ -26,6 +27,8 @@ header {
   padding: 20px;
   padding-bottom: 0;
   border: 3px solid black;
+  border-radius: 10px;
+  box-shadow: 0 5px 5px 2px #AAA;
 }
 header h1 {
   grid-row-start: 1;
@@ -38,7 +41,7 @@ header h3 {
   margin: 0;
   grid-row-start: 2;
   grid-column-start: 1;
-  font-size: 25px;
+  font-size: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
 }
@@ -46,7 +49,7 @@ header h3 span {
   display: block;
 }
 header h3 .h3-bigger {
-  font-size: 35px;
+  font-size: 30px;
 }
 header #main-logo {
   height: var(--main-title-fs);
@@ -93,10 +96,6 @@ header nav form input {
   font-weight: 500;
 }
 
-#discord-icon {
-  width: 10vw;
-}
-
 main {
   width: 90%;
   margin: auto;
@@ -110,10 +109,12 @@ main {
   width: 100%;
   height: 30vh;
   padding: 15px;
-  margin-top: 50px;
+  margin-top: 100px;
   border: 3px solid black;
+  border-radius: 0 10px 10px 10px;
   z-index: 55;
   background-color: white;
+  box-shadow: 0 5px 5px 2px #AAA;
 }
 #sponsors figure {
   display: flex;
@@ -166,7 +167,7 @@ main {
   border: 1px solid #CCC;
   border-radius: 10px;
   background: radial-gradient(circle, #EEE 30%, #CCC 70%);
-  box-shadow: 0 0 5px 10px #CCC;
+  box-shadow: 0 0 10px 5px #CCC;
 }
 #quote-text p {
   margin: 0;
@@ -180,6 +181,174 @@ main {
 }
 #quote-text p .big-text {
   font-size: 32px;
+}
+
+#introducing {
+  width: 50%;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 15px;
+  text-align: center;
+}
+#introducing h5 {
+  margin: 0;
+  margin-top: 20px;
+  font-size: 22px;
+}
+#introducing h2 {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 62px;
+  letter-spacing: 2px;
+}
+
+#product-boxes {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#product-boxes .product-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 30px 10px 20px;
+  background-color: #D0D0D0;
+  width: 26%;
+  height: 90%;
+  text-align: center;
+  box-shadow: 0 5px 4px 2px #AAA;
+}
+#product-boxes .product-box h5 {
+  margin: 0;
+  font-size: 18px;
+}
+#product-boxes .product-box p {
+  font-size: 12px;
+}
+#product-boxes .product-box a {
+  width: 60%;
+  margin: auto;
+  padding: 5px 10px;
+  border: 3px outset #999;
+  border-radius: 10px;
+  background-color: #ffbaba;
+  color: black;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+}
+#product-boxes .center-box {
+  width: 30%;
+  padding: 30px 20px 25px;
+  background-color: #EAEAEA;
+}
+#product-boxes .center-box h5 {
+  font-size: 22px;
+}
+#product-boxes .center-box p {
+  font-size: 16px;
+}
+#product-boxes .center-box a {
+  width: 80%;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+#wip {
+  margin-top: 40px;
+  text-align: center;
+}
+#wip h6 {
+  margin: 0;
+  font-size: 24px;
+}
+#wip p {
+  margin: 0;
+  font-size: 20px;
+}
+
+#discord {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+  margin-top: 100px;
+}
+#discord aside {
+  text-align: center;
+  font-size: 28px;
+}
+#discord div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #eee;
+  box-shadow: 0 3px 5px 2px #BBB;
+}
+#discord div img {
+  width: 15%;
+}
+#discord div p {
+  width: 80%;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 35px;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 30px;
+  border-top: 4px double black;
+  text-align: center;
+}
+footer h4 {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+footer h4 a::before, footer h4 a::after {
+  content: " • ";
+}
+footer a {
+  color: black;
+}
+footer #icons {
+  grid-column-start: 1;
+  grid-row-start: 2;
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+  margin: auto;
+}
+footer #icons a {
+  font-size: 30px;
+}
+footer #bottom {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  font-size: 17px;
+}
+footer #bottom p {
+  margin-top: 10px;
+}
+
+#copy {
+  font-size: 8px;
 }
 
 /*# sourceMappingURL=landing_page_alt.css.map */
