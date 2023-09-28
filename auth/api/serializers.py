@@ -12,11 +12,11 @@ class BaseSerializer(serializers.ModelSerializer):
 
 
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
+class UserSerializer(BaseSerializer):
+    class Meta(BaseSerializer.Meta):
         model = User
-        fields = ('id', 'username', 'email', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        # fields = ('id', 'username', 'email', 'password')
+        # extra_kwargs = {'password': {'write_only': True}}
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
