@@ -12,8 +12,8 @@ const Demo = () => {
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
     const [selectedAdd, setSelectedAdd] = useState(null);
-    const [url, setUrl] = useState('/api/users/');
-    const [title, setTitle] = useState('Users');
+    const [url, setUrl] = useState('/api/Opportunity/');
+    const [title, setTitle] = useState('Opportunities');
 
     const { globalState } = useContext(GlobalContext);
 
@@ -66,19 +66,9 @@ const Demo = () => {
         toggleAddModal();
         setSelectedAdd(
             {
-                "password": "",
-                "last_login": null,
-                "is_superuser": false,
-                "username": "",
-                "first_name": "",
-                "last_name": "",
-                "email": "",
-                "is_staff": false,
-                "is_active": true,
-                "date_joined": "2023-09-24T10:40:32.765545-04:00",
-                "bio": "",
-                "groups": [],
-                "user_permissions": []
+                "name": "",
+                "description": "",
+                "tags": []
             }
         );
 
