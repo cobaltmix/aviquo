@@ -23,4 +23,3 @@ class WaitlistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Waitlist
         fields = '__all__'
-
