@@ -62,4 +62,3 @@ class OpportunityView(generics.CreateAPIView):
 class WaitlistView(generics.CreateAPIView):
     queryset = Waitlist.objects.all
     serializer_class  = WaitlistSerializer
-
