@@ -27,6 +27,9 @@ const Navbar = () => {
                     <NavLink to="/demo_waitlist" activeStyle>
                         Waitlist Endpoint Demo
                     </NavLink>
+                    <NavLink to="/waitlist_count" activeStyle>
+                        Waitlist Count
+                    </NavLink>
                 </NavMenu>
             </Nav>
         </>
