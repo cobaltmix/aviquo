@@ -32,7 +32,7 @@ class Opportunity(models.Model):
     class Meta:
         managed  = True
         db_table = 'users_opportunity'
-    tags = models.ManyToManyField(Tag, default={})
+    tags = models.ManyToManyField(Tag, blank=True)
     def __str__(self):
         return str(self.id)
 
