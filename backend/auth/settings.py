@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     "rest_framework_api_key",
+    'chat.apps.ChatConfig'
 ]
 
 MIDDLEWARE = [
@@ -73,7 +76,10 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'auth.wsgi.application'
+# WSGI_APPLICATION = 'auth.wsgi.application'
+
+ASGI_APPLICATION = 'auth.asgi.application'
+
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # Database
@@ -106,20 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework_api_key.permissions.HasAPIKey",
     ]
 }
 
-JWT_AUTH = {
-    'JWT_SECRET_KEY': 'your-secret-key',  # Change this to a secure secret key
-    'JWT_ALGORITHM': 'HS256',
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -149,3 +146,9 @@ CORS_ORIGIN_WHITELIST = [
 
 
 API_KEY_CUSTOM_HEADER = "HTTP_X_API_KEY"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': "channels.layers.InMemoryChannelLayer"
+        }
+    }
