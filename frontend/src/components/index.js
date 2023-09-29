@@ -24,6 +24,9 @@ const Navbar = () => {
                     <NavLink to="/chatbox_template" activeStyle>
                         Chatbox Preview
                     </NavLink>
+                    <NavLink to="/demo_waitlist" activeStyle>
+                        Waitlist Endpoint Demo
+                    </NavLink>
                 </NavMenu>
             </Nav>
         </>

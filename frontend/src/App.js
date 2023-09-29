@@ -9,6 +9,7 @@ import GenerateAPIKey from './pages/gen_key'
 import Demo from './pages/demo'
 import DemoO from './pages/demo_opp'
 import DemoF from './pages/demo_forum'
+import DemoW from './pages/demo_waitlist'
 import { GlobalProvider, GlobalContext } from './GlobalContext';
 
 
@@ -28,6 +29,7 @@ const App = () => {
                     <Route path='/demo_users' element={<Demo />} />
                     <Route path='/demo_forum' element={<DemoF />} />
                     <Route path='/demo_opp' element={<DemoO />} />
+                    <Route path='/demo_waitlist' element={<DemoW />} />
                 </Routes>
             </Router>
         </GlobalProvider>
