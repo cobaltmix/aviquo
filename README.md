@@ -15,7 +15,7 @@ Next, you need to install all the dependencies:
 
 Now, we need to set up the database. Paste into your terminal:
 	
-	cd auth
+	cd backend
 	python manage.py makemigrations
 	python manage.py migrate
 
