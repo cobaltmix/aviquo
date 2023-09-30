@@ -9,6 +9,7 @@ $light-pink: #ffcfcf;
 $less-light-pink: #ffbaba;
 $purple: #805c9c;
 $more-purple: #904c7c;
+$even-more-purple:rgb(99, 68, 89);
 $dark-purple: #402c4c;
 $light-purple: #e6afed;
 $primary-1: #322249;
@@ -16,7 +17,7 @@ $primary-2: #916d87;
 $primary-3: #775967;
 $primary-4: #804c74;
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     :root {
         --header-column-diff: 3vw;
         --header-size-padding: 7vw;
@@ -68,7 +69,7 @@ $primary-4: #804c74;
     }
 }
 
-@media screen and (min-width: 601px) {
+@media (min-width: 601px) {
     :root {
         --header-column-diff: 20vw;
         --header-size-padding: 4vw;
@@ -93,7 +94,7 @@ $primary-4: #804c74;
         --figcaption-font-size: calc(10px + 1.5vw);
         --fig-img-height: calc(30px + 8vw);
 
-        --quote-pad: 25vh;
+        --quote-pad: 20vh;
         --quote-small: calc(1px + 1.5vw);
         --quote-p: calc(2px + 2.5vw);
         --quote-big: calc(3px + 2vw);
@@ -101,16 +102,16 @@ $primary-4: #804c74;
         --intro-h5: 2vw;
         --intro-h2: 7vw;
 
-        --product-box-marg-top: 20px;
+        --product-box-marg-top: 10px;
         --product-box-h5: 2vw;
-        --product-box-p: 1.5vw;
-        --product-box-a: 1.8vw;
+        --product-box-p: 1.1vw;
+        --product-box-a: 1.5vw;
         --product-box-a-pad: 5px;
 
-        --wip-h6: 3vw;
-        --wip-p: 2vw;
+        --wip-h6: 2.2vw;
+        --wip-p: 1.5vw;
 
-        --discord-h3: 4vw;
+        --discord-h3: 3vw;
         --discord-icon-size: 10vw;
         --discord-pad: 10vw;
 
@@ -304,7 +305,7 @@ main {
             left: 0;
             top: calc(-1 * var(--aside-calc));
 
-            color: $purple;
+            color: $even-more-purple;
 
             border-right: var(--aside-calc) solid transparent;
             border-bottom: var(--aside-calc) solid $light-pink;
@@ -321,15 +322,16 @@ main {
 
                 background-color: $light-pink;
                 font-size: var(--spon-aside-head-size);
+                font-weight: 700;
             }
         }
 
         figure {
             display: flex;
 
-            width: 20%;
+            width: 18%;
 
-            @media screen and (max-width: 350px) {
+            @media (max-width: 350px) {
                 width: 40%;
                 margin: 6px 0;
             }
@@ -343,7 +345,7 @@ main {
             img {
                 height: var(--fig-img-height);
 
-                @media screen and (max-width: 350px) {
+                @media (max-width: 350px) {
                     height: 24vw;
                 }
 
@@ -364,7 +366,7 @@ main {
         width: 100%;
 
         margin: 0;
-        padding: var(--quote-pad) 0 calc(var(--quote-pad) / 2);
+        padding: var(--quote-pad) 0 calc(var(--quote-pad) * 0.7);
 
         background: linear-gradient($primary-3 -10%,
                 transparent 20%,
@@ -398,9 +400,8 @@ main {
 
     article#introducing {
         margin: 0;
-        margin-top: -30px;
 
-        background: linear-gradient(transparent 0%, $primary-4 50%);
+        background-color: $primary-4;
 
         text-align: center;
 
@@ -426,7 +427,9 @@ main {
         display: flex;
         justify-content: space-evenly;
 
-        @media screen and (max-width: 350px) {
+        margin-bottom: 30px;
+
+        @media (max-width: 350px) {
             flex-direction: column;
             align-items: center;
         }
@@ -448,7 +451,7 @@ main {
 
             transition: transform 0.5s, background 0.5s;
 
-            @media screen and (max-width: 350px) {
+            @media (max-width: 350px) {
                 width: 90%;
                 margin: 10px 0 0 0;
             }
@@ -457,7 +460,7 @@ main {
                 margin-top: var(--product-box-marg-top);
                 margin-bottom: 5px;
 
-                color: $more-purple;
+                color: $primary-3;
 
                 font-size: var(--product-box-h5);
                 font-weight: 700;
@@ -479,7 +482,7 @@ main {
 
                 border-radius: 20px;
 
-                background-color: $more-purple;
+                background-color: $primary-2;
                 color: white;
 
                 font-size: var(--product-box-a);
@@ -489,7 +492,7 @@ main {
                 font-weight: 500;
             }
 
-            @media screen and (max-width: 350px) {
+            @media (max-width: 350px) {
                 h5 {
                     font-size: 5vw;
                 }
@@ -500,7 +503,7 @@ main {
             }
         }
 
-        @media screen and (min-width: 351px) {
+        @media (min-width: 351px) {
             .product-box:first-child {
                 margin-left: 2vw;
             }
@@ -511,7 +514,7 @@ main {
         }
 
         .product-box:nth-of-type(2) {
-            transform: scale(1.15);
+            transform: scale(1.1);
             background: $light-pink;
         }
 
@@ -531,6 +534,8 @@ main {
 
         border: 1px solid transparent;
 
+        padding-bottom: 30px;
+
         h6 {
             color: $light-pink;
 
@@ -547,6 +552,7 @@ main {
 
             font-size: var(--wip-p);
             text-align: center;
+            font-weight: 500;
         }
     }
 
