@@ -106,6 +106,8 @@ header img#main-logo {
   align-self: center;
   grid-row-start: 1;
   grid-column-start: 2;
+  font-size: calc(var(--main-title-font-size) - 10px);
+  color: #D08EA1;
 }
 header h1,
 header h3 {
