@@ -517,12 +517,6 @@ main {
             transform: scale(1.1);
             background: $light-pink;
         }
-
-        .product-box:hover {
-            transform: scale(1.3);
-            background: $light-pink;
-            z-index: 100;
-        }
     }
 
     #wip {
@@ -619,6 +613,8 @@ footer {
     background-color: $light-purple;
 
     h4 {
+        font-size: 1.5rem;
+
         width: fit-content;
 
         a {
