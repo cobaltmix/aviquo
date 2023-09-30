@@ -7,6 +7,20 @@ import axios from 'axios';
 
 
 const Demo = () => {
+    const { updateGlobalState } = useContext(GlobalContext);
+    const getApiKeyFromLocalStorage = () => {
+        const apiKey = localStorage.getItem('api_key');
+        if (apiKey) {
+            console.log(apiKey)
+            updateGlobalState({
+                api_key: apiKey,
+            });
+        }
+    };
+
+    useEffect(() => {
+        getApiKeyFromLocalStorage();
+     }, []);
     const [users, setUsers] = useState([]);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
