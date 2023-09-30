@@ -63,6 +63,7 @@ class TagViewSet(BaseViewSet):
     model = Tag
     serializer_class = TagSerializer
     queryset = model.objects.all()
+    
 class WaitlistViewSet(BaseViewSet):
     model = Waitlist
     serializer_class = WaitlistSerializer

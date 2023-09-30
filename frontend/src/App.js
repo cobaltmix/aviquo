@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
 import Navbar from './components/index';
 import { BrowserRouter as Router, Routes, Route }
@@ -9,10 +9,13 @@ import GenerateAPIKey from './pages/gen_key'
 import Demo from './pages/demo'
 import DemoO from './pages/demo_opp'
 import DemoF from './pages/demo_forum'
-import { GlobalProvider } from './GlobalContext';
+import { GlobalProvider, GlobalContext } from './GlobalContext';
+
 
 
 const App = () => {
+    
+
     return (
         <GlobalProvider>
             <Router>

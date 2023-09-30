@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <style>
+     body {
+      color: pink;
+      text-align: center;
+      }
+      ul {
+  list-style: none;
+}
+    </style>
+  </head>
+  <body>
+
+    <h1>Hello, {{ user.username|default:'Guest' }}</h1>
+
+    <p> Welcome to the Our site</p>
+    <div>
+      {% if user.is_authenticated %}
+          <ul>
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'profile' %}">View Profile</a>
+            <div>
+              <a href="{% url 'ecs-create' %}">Add an EC</a>
+              <a href="{% url 'ecs-list' %}">View all ECS</a>
+            </div>
+            <div>
+              <a href="{% url 'aws-create' %}">Add an Award</a>
+              <a href="{% url 'aws-list' %}">View all Awards</a>
+            </div>
+            <div>
+              <a href="{% url 'sc-create' %}">Add a Scholarship</a>
+              <a href="{% url 'sc-list' %}">View all Scholarship</a>
+            </div>
+            <div>
+              <a href="{% url 'forum' %}">Forum</a>
+            </div>
+          </ul>
+
+      {% else %}
+          <a href="{% url 'signup' %}">Sign Up</a>
+          <a href="{% url 'login' %}">Login</a>
+
+      {% endif %}
+  </div>
+  <ul>
+
+  </ul>
+  </body>
+</html>
+
+
+
+

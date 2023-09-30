@@ -15,7 +15,7 @@ Next, you need to install all the dependencies:
 
 Now, we need to set up the database. Paste into your terminal:
 	
-	cd auth
+	cd backend
 	python manage.py makemigrations
 	python manage.py migrate
 
@@ -59,6 +59,8 @@ A guide to the backend APIs:
 /api/AWS is the endpoint for awards
 
 /api/SC is the endpoint for scholarships
+
+/api/Waitlist is the endpoint for the waitlist
 
 all CRUD functions have been set-up, along with middle-ware dependencies, so backend APIs can be accesed seemlessly
 
