@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import Forum, Opportunity, Waitlist
-from django.contrib.auth import get_user_model
-User = get_user_model()
+# from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
+# User = get_user_model()
 
 class ForumSerializer(serializers.ModelSerializer):
     class Meta:
