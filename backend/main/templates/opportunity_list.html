@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Opportunity List</title>
+    </head>
+    <body>
+        <h1>Opportunity List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for opportunity in opportunities %}
+                <tr>
+                    <td>{{ opportunity.id }}</td>
+                    <td>{{ opportunity.name }}</td>
+                    <td>{{ opportunity.description }}</td>
+                    <td href="{{" opportunity.URL }}>{{ opportunity.URL }}</td>
+                    <td>
+                        <ul>
+                            {% for tag in opportunity.tags.all %}
+                            <li>{{ tag.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

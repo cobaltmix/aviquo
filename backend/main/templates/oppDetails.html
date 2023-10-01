@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Database Details</title>
+    </head>
+
+    <body>
+        <h1>Database Details</h1>
+
+        <ul>
+            {% for item in data %}
+            <li>Name: {{ item.name }}</li>
+            <li>Description: {{ item.description }}</li>
+            <li>Tags: {{item.Tag}}</li>
+            <!-- Add more fields as needed -->
+            {% endfor %}
+        </ul>
+    </body>
+</html>

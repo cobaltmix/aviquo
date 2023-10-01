@@ -6,11 +6,10 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from rest_framework import generics
 
-from .models import Forum, Opportunity, Waitlist, User
-from .serializers import ForumSerializer, OpportunitySerializer, WaitlistSerializer
+from .models import Forum, Opportunity, User, Waitlist
+from .serializers import ForumSerializer, WaitlistSerializer
 
 
-# Create your views here.
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = User
@@ -18,7 +17,7 @@ class EditProfileForm(forms.ModelForm):
 
 
 def home(request):
-    return render(request, "users/home.html", {})
+    return render(request, "home.html", {})
 
 
 @login_required
@@ -35,6 +34,13 @@ def profile(request):
         form = EditProfileForm(instance=user)
 
     return render(request, "users/profile.html", {"user": user, "form": form})
+
+
+@login_required
+def OpportunityView(request):
+    opportunities = Opportunity.objects.all()
+
+    return render(request, "opportunity_list.html", {"opportunities": opportunities})
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -54,11 +60,6 @@ class SignUp(CreateView):
 class ForumView(generics.CreateAPIView):
     queryset = Forum.objects.all()
     serializer_class = ForumSerializer
-
-
-class OpportunityView(generics.CreateAPIView):
-    queryset = Opportunity.objects.all
-    serializer_class = OpportunitySerializer
 
 
 class WaitlistView(generics.CreateAPIView):

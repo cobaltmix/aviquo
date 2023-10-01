@@ -1,6 +1,5 @@
-from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from .models import Forum, Opportunity, Waitlist
+from .models import Forum, Opportunity, User, Waitlist
 
 
 class ForumSerializer(serializers.ModelSerializer):
@@ -11,7 +10,7 @@ class ForumSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = get_user_model()
+        model = User
         fields = "__all__"
 
 
