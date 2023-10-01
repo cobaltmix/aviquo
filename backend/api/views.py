@@ -7,8 +7,6 @@ from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate, login
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.views import APIView
 from .serializers import UserSerializer, ForumSerializer, OpportunitySerializer, TagSerializer, LoginSerializer, WaitlistSerializer
 from django.http import JsonResponse
@@ -39,14 +37,6 @@ class RegistrationAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (permissions.AllowAny,)
-
-# Use TokenObtainPairView for login
-class LoginAPIView(TokenObtainPairView):
-    serializer_class = LoginSerializer
-
-# Use TokenRefreshView for token refresh
-class TokenRefreshAPIView(TokenRefreshView):
-    pass
 
 
 class ForumViewSet(BaseViewSet):

@@ -7,10 +7,7 @@ import DeprecatedDemo from './pages/deprecated_demo';
 import ChatBoxTemplate from './pages/chatbox'
 import GenerateAPIKey from './pages/gen_key'
 import Demo from './pages/demo'
-import DemoO from './pages/demo_opp'
-import DemoF from './pages/demo_forum'
-import { GlobalProvider, GlobalContext } from './GlobalContext';
-
+import { GlobalProvider } from './GlobalContext';
 
 
 const App = () => {
@@ -26,8 +23,6 @@ const App = () => {
                     <Route path='/chatbox_template' element={<ChatBoxTemplate />} />
                     <Route path='/gen_otp_key' element={<GenerateAPIKey />} />
                     <Route path='/demo_users' element={<Demo />} />
-                    <Route path='/demo_forum' element={<DemoF />} />
-                    <Route path='/demo_opp' element={<DemoO />} />
                 </Routes>
             </Router>
         </GlobalProvider>
