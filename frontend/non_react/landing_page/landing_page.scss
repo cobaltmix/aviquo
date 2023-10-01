@@ -25,6 +25,7 @@ $primary-4: #804c74;
         --main-title-font-size: calc(1px + 8vw);
         --main-subtitle-font-size: calc(1px + 4vw);
         --main-big-subtitle-font-size: calc(1.5px + 5.5vw);
+        --logo-column-start: 2;
 
         --nav-bottom-pad: calc(0.3px + 1.3vw);
         --wl-font-size: calc(1.5vw + 3px);
@@ -77,8 +78,9 @@ $primary-4: #804c74;
         --main-title-font-size: calc(1px + 5vw);
         --main-subtitle-font-size: calc(1px + 2vw);
         --main-big-subtitle-font-size: calc(1.5px + 3.5vw);
+        --logo-column-start: 1;
 
-        --nav-bottom-pad: calc(0.3px + 1.2vw);
+        --nav-bottom-pad: 1vw;
         --wl-font-size: calc(0.5vw + 8px);
         --wl-padd-size: calc(0.7vw + 6px);
         --wl-submit-gcs: 2;
@@ -146,11 +148,12 @@ header {
         height: var(--main-title-font-size);
 
         margin-left: auto;
-        margin-right: 0;
+        margin-right: auto;
 
         align-self: center;
         grid-row-start: 1;
-        grid-column-start: 2;
+        grid-column-start: var(--logo-column-start);
+        grid-column-end: 3;
 
         font-size: calc(var(--main-title-font-size) - 10px);
         color: #D08EA1;
