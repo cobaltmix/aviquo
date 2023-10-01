@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatBox from '../components/ChatBox';
+import ChatBox from '../components/ChatBoxV2';
 
 
 const ChatBoxTemplate = () => {
