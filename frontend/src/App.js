@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import './App.css';
 import Navbar from './components/index';
 import { BrowserRouter as Router, Routes, Route }
@@ -11,6 +11,8 @@ import { GlobalProvider } from './GlobalContext';
 
 
 const App = () => {
+    
+
     return (
         <GlobalProvider>
             <Router>
