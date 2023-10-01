@@ -12,14 +12,8 @@ const Navbar = () => {
                     <NavLink to="/demo_old" activeStyle>
                         Basic Endpoint Demo (Deprecated)
                     </NavLink>
-                    <NavLink to="/demo_users" activeStyle>
-                        User Endpoint Demo (Current)
-                    </NavLink>
-                    <NavLink to="/demo_forum" activeStyle>
-                        Forum Endpoint Demo (Current)
-                    </NavLink>
-                    <NavLink to="/demo_opp" activeStyle>
-                        Opportunities Endpoint Demo (Current)
+                    <NavLink to="/demo" activeStyle>
+                        Endpoint Demo (Current)
                     </NavLink>
                     <NavLink to="/chatbox_template" activeStyle>
                         Chatbox Preview

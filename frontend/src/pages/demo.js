@@ -7,21 +7,6 @@ import axios from 'axios';
 
 
 const Demo = () => {
-    const { updateGlobalState } = useContext(GlobalContext);
-    const getApiKeyFromLocalStorage = () => {
-        const apiKey = localStorage.getItem('api_key');
-        if (apiKey) {
-            console.log(apiKey)
-            updateGlobalState({
-                api_key: apiKey,
-            });
-        }
-    };
-
-    useEffect(() => {
-        getApiKeyFromLocalStorage();
-     }, []);
-    
     const [users, setUsers] = useState([]);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -101,7 +86,7 @@ const Demo = () => {
 
     const handleSaveEdit = (editedUser) => {
         console.log(globalState.api_key);
-      
+        console.log('here')
         axios
             .put(`${url}${editedUser.id}/`, editedUser, {
                 headers : {
