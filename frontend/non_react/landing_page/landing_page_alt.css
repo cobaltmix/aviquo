@@ -1,0 +1,185 @@
+* {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+:root {
+  --main-title-fs: 80px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: calc(var(--main-title-fs) + 10px);
+  align-items: center;
+  row-gap: 10px;
+  column-gap: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  padding-bottom: 0;
+  border: 3px solid black;
+}
+header h1 {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  margin: 0;
+  font-size: var(--main-title-fs);
+  font-family: "Poppins", sans-serif;
+}
+header h3 {
+  margin: 0;
+  grid-row-start: 2;
+  grid-column-start: 1;
+  font-size: 25px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+header h3 span {
+  display: block;
+}
+header h3 .h3-bigger {
+  font-size: 35px;
+}
+header #main-logo {
+  height: var(--main-title-fs);
+  grid-row-start: 1;
+  grid-column-start: 2;
+  margin: auto 0 auto auto;
+}
+header nav {
+  grid-row-start: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 100%;
+  padding: 10px 0;
+  border-top: 5px double black;
+}
+header nav form {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+header nav form #wl-email {
+  width: 60%;
+  border: 2px solid #DADADA;
+  background-color: #EEE;
+}
+header nav form #wl-email:hover, header nav form #wl-submit:focus {
+  border-color: #BABABA;
+}
+header nav form #wl-submit {
+  width: 30%;
+  border: 2px solid #555;
+  background-color: #805c9c;
+  color: white;
+}
+header nav form #wl-submit:hover, header nav form #wl-submit:active {
+  border-color: black;
+}
+header nav form input {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+#discord-icon {
+  width: 10vw;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+}
+
+#sponsors {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 30vh;
+  padding: 15px;
+  margin-top: 50px;
+  border: 3px solid black;
+  z-index: 55;
+  background-color: white;
+}
+#sponsors figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+  width: 150px;
+  max-width: 23%;
+  padding: 10px;
+  margin: 0;
+  border: 2px solid #777;
+  border-radius: 15px;
+  box-shadow: 0 3px 5px 2px #AAA;
+  background-color: #EEE;
+}
+#sponsors figure img {
+  max-height: 80%;
+  object-fit: contain;
+  margin: 0;
+}
+#sponsors figure figcaption {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+}
+#sponsors aside {
+  position: absolute;
+  display: block;
+  top: -42px;
+  left: -3px;
+  margin: 0;
+  border: 3px solid black;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+}
+#sponsors aside h5 {
+  margin: 5px;
+  font-size: 18px;
+  font-family: "Poppins";
+}
+
+#quote-text {
+  width: 40%;
+  margin: auto;
+  margin-top: 30px;
+  padding: 70px 5px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  background: radial-gradient(circle, #EEE 30%, #CCC 70%);
+  box-shadow: 0 0 5px 10px #CCC;
+}
+#quote-text p {
+  margin: 0;
+  font-family: "Roboto Slab";
+  font-size: 24px;
+  text-align: center;
+  line-height: 36px;
+}
+#quote-text p .small-text {
+  font-size: 16px;
+}
+#quote-text p .big-text {
+  font-size: 32px;
+}
+
+/*# sourceMappingURL=landing_page_alt.css.map */
