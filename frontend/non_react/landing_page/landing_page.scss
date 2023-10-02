@@ -28,6 +28,11 @@ body {
     background-color: rgb(219, 202, 214);
 }
 
+.w-85 {
+    width: 85%;
+    margin: auto;
+}
+
 header {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -36,9 +41,6 @@ header {
     row-gap: 10px;
     column-gap: 10px;
 
-    width: 85%;
-
-    margin: auto;
     margin-top: 20px;
     padding: 30px 20px;
     padding-bottom: 0;
@@ -144,12 +146,6 @@ header {
             }
         }
     }
-}
-
-main {
-    width: 85%;
-
-    margin: auto;
 }
 
 #sponsors {
