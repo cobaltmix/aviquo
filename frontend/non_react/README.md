@@ -8,6 +8,7 @@ Download compiler here or use your package manager:
 <https://github.com/sass/dart-sass/releases/tag/1.68.0>
 
 Then run compile_scss.sh (The sass compiler should be called sass for this to work, make an alias if it isn't)
+auto_compile_scss.sh is for dev, it automatically recompiles scss on change to scss
 
 To host these:
 
