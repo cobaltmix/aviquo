@@ -4,20 +4,77 @@
   font-family: inherit;
 }
 
-:root {
-  --main-title-fs: 70px;
+@media (min-width: 600px) {
+  :root {
+    --main-title-fs: calc(2vw + 30px);
+    --body-top-pad: 50px;
+    --body-back: rgb(219, 202, 214);
+    --body-width-1: 85%;
+    --head-pad: 30px 2vw;
+    --head-h3: calc(0.7vw + 10px);
+    --head-h3-big: calc(1.5vw + 15px);
+    --nav-form-width: calc(50vw + 100px);
+    --nav-fs: calc(5px + 0.7vw);
+    --spon-marg-top: 70px;
+    --spon-height: calc(var(--spona-height) + var(--sponf-hegiht) + var(--spon-pad)*2 + var(--spon-between));
+    --spon-pad: 25px;
+    --spon-between: calc(3vw + 10px);
+    --spona-height: 50px;
+    --spona-font-size: calc(15px + 1vw);
+    --sponf-width: 16vw;
+    --sponf-hegiht: 17vw;
+    --sponf-pad: 1vw calc(5px + 1vw);
+    --sponf-marg-bot: 0;
+    --sponf-img-height: 80%;
+    --sponf-font-size: calc(10px + 1.2vw);
+    --quote-width: calc(300px + 40vw);
+    --quote-height: calc(300px + 30vw;);
+    --quote-marg-top: 50px;
+    --quote-pad: 7vw 6vw;
+    --quote-normal-fs: calc(13px + 2.1vw);
+    --quote-smoool-fs: calc(13px + 1.0vw);
+    --quote-chngus-fs: calc(17px + 2.6vw);
+    --quote-line-hght: calc(30px + 2.5vw);
+    --intro-mg-top: 50px;
+    --intro-big: calc(15px + 4vw);
+    --intro-sml: calc(5px + 1.5vw);
+    --pb-width: calc(80vw + 50px);
+    --pb-min-width: 550px;
+    --pb-pad: calc(10px + 1vw) calc(5px + 1.0vw) calc(7px + 1.5vw);
+    --pb-box-width: calc(10vw + 100px);
+    --pb-box-height: 90%;
+    --pb-h5: calc(6px + 0.8vw);
+    --pb-p: calc(5px + 0.5vw);
+    --pb-sep: calc(10px + 0.3vw);
+    --pb-a-width: calc(60% + 40px);
+    --pb-a-fs: calc(8px + 0.4vw);
+    --pb-a-pad: 10px calc(10px + 1.2vw);
+    --pb-big-scale-factor: 1.3;
+    --wip-h6: calc(8px + 0.8vw);
+    --wip-p: calc(8px + 1vw);
+    --discord-width: calc(40vw + 300px);
+    --discord-big: calc(15px + 1.5vw);
+    --discord-text: calc(8px + 0.8vw);
+    --discord-icon: 15%;
+    --foot-bg: rgb(235, 206, 221);
+    --foot-pad-top: 10px;
+    --foot-h4: calc(7px + 1vw);
+    --foot-i-width: 2.5vw;
+    --foot-i-fs: 2.0vw;
+    --foot-a-fs: 1.0vw;
+    --bottom-fs: calc(8px + 0.6vw);
+  }
 }
-
 body {
   margin: 0;
   padding: 0;
-  padding-top: 50px;
+  padding-top: var(--body-top-pad);
   font-family: "Poppins", sans-serif;
-  background-color: rgb(219, 202, 214);
+  background-color: var(--body-back);
 }
 
 .w-85 {
-  width: 85%;
+  width: var(--body-width-1);
   margin: auto;
 }
 
@@ -28,10 +85,8 @@ header {
   align-items: center;
   row-gap: 10px;
   column-gap: 10px;
-  margin-top: 50px;
-  padding: 30px 20px;
+  padding: var(--head-pad);
   padding-bottom: 0;
-  border: 3px solid black;
   border-radius: 10px;
   background-color: #EEE;
 }
@@ -47,7 +102,7 @@ header h3 {
   margin-bottom: 15px;
   grid-row-start: 2;
   grid-column-start: 1;
-  font-size: 20px;
+  font-size: var(--head-h3);
   font-family: "Poppins", sans-serif;
   font-weight: 700;
 }
@@ -55,7 +110,7 @@ header h3 span {
   display: block;
 }
 header h3 .h3-bigger {
-  font-size: 30px;
+  font-size: var(--head-h3-big);
 }
 header #main-logo {
   height: var(--main-title-fs);
@@ -72,7 +127,7 @@ header nav {
   border-top: 5px double black;
 }
 header nav form {
-  width: 60%;
+  width: var(--nav-form-width);
   margin: auto;
   display: flex;
   justify-content: space-around;
@@ -99,7 +154,7 @@ header nav form #wl-submit:active {
 header nav form input {
   padding: 10px;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: var(--nav-fs);
   font-family: "Poppins", sans-serif;
   font-weight: 500;
 }
@@ -112,10 +167,9 @@ header nav form input {
   align-items: center;
   align-content: space-between;
   width: 100%;
-  height: 50vh;
-  padding: 15px;
-  margin-top: 50px;
-  border: 3px solid #666;
+  height: var(--spon-height);
+  padding: var(--spon-pad);
+  margin-top: var(--spon-marg-top);
   border-radius: 10px;
   background-color: #F5F5F5;
 }
@@ -124,11 +178,11 @@ header nav form input {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: calc(100% - 100px);
-  width: 18%;
-  padding: 10px 20px;
+  height: var(--sponf-hegiht);
+  width: var(--sponf-width);
+  padding: var(--sponf-pad);
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: var(--sponf-marg-bot);
   border: 2px solid #CACACA;
   border-top-width: 0;
   border-bottom-width: 3px;
@@ -138,31 +192,32 @@ header nav form input {
   z-index: 5;
 }
 #sponsors figure img {
-  max-height: 80%;
+  max-height: var(--sponf-img-height);
   object-fit: contain;
   margin: 0;
 }
 #sponsors figure figcaption {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: var(--sponf-font-size);
   text-align: center;
   margin: 0;
 }
 #sponsors aside {
   display: block;
   width: 100%;
-  height: 50px;
+  height: var(--spona-height);
   margin: 0;
 }
 #sponsors aside h5 {
   width: fit-content;
   margin: 0;
   padding: 7px 10px;
-  font-size: 28px;
+  font-size: var(--spona-font-size);
   font-family: "Poppins";
-  border: 2px solid #8f8f8f;
+  box-shadow: 0 2px 2px 1px #8f8f8f;
   border-bottom-width: 4px;
+  border-top-width: 0;
   border-radius: 15px;
   background-color: #EEE;
 }
@@ -171,52 +226,53 @@ header nav form input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50vw;
-  height: 40vw;
+  width: var(--quote-width);
+  height: var(--quote-height);
   margin: auto;
-  margin-top: 50px;
-  padding: 50px 40px;
+  margin-top: var(--quote-marg-top);
+  padding: var(--quote-pad);
   --how-much: 15%;
   background: linear-gradient(rgb(219, 202, 214), transparent var(--how-much), transparent calc(100% - var(--how-much)), rgb(219, 202, 214)), linear-gradient(90deg, rgb(219, 202, 214), transparent var(--how-much), transparent calc(100% - var(--how-much)), rgb(219, 202, 214)), radial-gradient(circle, #ffcfcf 20%, #ccb3e9 80%);
 }
 #quote-text p {
   margin: 0;
   font-family: "Roboto Slab";
-  font-size: 39px;
+  font-size: var(--quote-normal-fs);
   text-align: center;
-  line-height: 60px;
+  line-height: var(--quote-line-hght);
   font-weight: 400;
 }
 #quote-text p .small-text {
-  font-size: 27px;
+  font-size: var(--quote-smoool-fs);
   font-weight: 300;
 }
 #quote-text p .big-text {
-  font-size: 50px;
+  font-size: var(--quote-chngus-fs);
   font-weight: 600;
 }
 
 #introducing {
   width: 50%;
   margin: auto;
-  margin-top: 100px;
+  margin-top: var(--intro-mg-top);
   border-radius: 15px;
   text-align: center;
 }
 #introducing h5 {
   margin: 0;
   margin-top: 20px;
-  font-size: 22px;
+  font-size: var(--intro-sml);
 }
 #introducing h2 {
   margin: 0;
   margin-top: 10px;
-  font-size: 62px;
+  font-size: var(--intro-big);
   letter-spacing: 2px;
 }
 
 #product-boxes {
-  width: 80%;
+  width: var(--pb-width);
+  min-width: var(--pb-min-width);
   margin: auto;
   margin-top: 50px;
   display: flex;
@@ -227,55 +283,55 @@ header nav form input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 10px;
-  padding: 30px 10px 20px;
+  border-radius: calc(5px + 1vw);
+  padding: var(--pb-pad);
   background-color: #dddddd;
-  width: 25%;
-  height: 90%;
+  width: var(--pb-box-width);
+  height: var(--pb-box-height);
   text-align: center;
   box-shadow: 0 5px 5px 3px #acacac;
 }
 #product-boxes .product-box h5 {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--pb-h5);
 }
 #product-boxes .product-box p {
-  font-size: 12px;
+  font-size: var(--pb-p);
   width: 95%;
   margin: auto;
-  margin-top: 20px;
+  margin-top: var(--pb-sep);
   text-align: justify;
 }
 #product-boxes .product-box a {
-  width: 60%;
+  width: var(--pb-a-width);
   margin: auto;
-  margin-top: 20px;
+  margin-top: var(--pb-sep);
   padding: 5px 10px;
   border: 3px outset #999;
   border-radius: 10px;
   background-color: #ffbaba;
   color: black;
-  font-size: 14px;
+  font-size: var(--pb-a-fs);
   font-weight: 500;
   text-align: center;
   text-decoration: none;
 }
 #product-boxes .center-box {
-  width: 35%;
-  padding: 30px 20px 25px;
+  width: calc(var(--pb-box-width) * var(--pb-big-scale-factor));
   background-color: #EAEAEA;
+  z-index: 5052;
 }
 #product-boxes .center-box h5 {
-  font-size: 22px;
+  font-size: calc(var(--pb-h5) * var(--pb-big-scale-factor));
 }
 #product-boxes .center-box p {
-  font-size: 16px;
+  font-size: calc(var(--pb-p) * var(--pb-big-scale-factor));
 }
 #product-boxes .center-box a {
   width: 80%;
-  font-size: 17px;
+  font-size: calc(var(--pb-a-fs) * var(--pb-big-scale-factor));
   font-weight: 600;
-  padding: 10px 20px;
+  padding: var(--pb-a-pad);
 }
 
 #wip {
@@ -284,23 +340,24 @@ header nav form input {
 }
 #wip h6 {
   margin: 0;
-  font-size: 24px;
+  font-size: var(--wip-h6);
 }
 #wip p {
   margin: 0;
-  font-size: 20px;
+  font-size: var(--wip-p);
 }
 
 #discord {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: var(--discord-width);
   margin: auto;
   margin-top: 80px;
 }
 #discord aside {
   text-align: center;
-  font-size: 32px;
+  font-size: var(--discord-big);
 }
 #discord a {
   position: relative;
@@ -319,12 +376,12 @@ header nav form input {
   transition: all 0.2s;
 }
 #discord a img {
-  width: 15%;
+  width: var(--discord-icon);
 }
 #discord a p {
   width: 80%;
   color: black;
-  font-size: 17px;
+  font-size: var(--discord-text);
 }
 #discord a:hover {
   transform: translate(-3px, -3px);
@@ -332,21 +389,22 @@ header nav form input {
 }
 
 footer {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 35px;
   align-items: center;
   width: 100%;
-  padding-top: 20px;
+  padding-top: var(--foot-pad-top);
   margin-top: 30px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   border-top: 4px double black;
   text-align: center;
+  background-color: var(--foot-bg);
 }
 footer h4 {
   grid-column-start: 1;
   grid-row-start: 1;
-  font-size: 26px;
+  font-size: var(--foot-h4);
   margin-top: 0;
   margin-bottom: 10px;
 }
@@ -365,6 +423,7 @@ footer #icons {
   flex-direction: column;
   width: fit-content;
   margin: auto;
+  align-self: start;
 }
 footer #icons a {
   display: flex;
@@ -372,24 +431,33 @@ footer #icons a {
   align-items: center;
   width: 100%;
   text-decoration: none;
+  font-size: var(--foot-a-fs);
 }
 footer #icons a i {
-  width: 35px;
-  font-size: 30px;
+  width: var(--foot-i-width);
+  font-size: var(--foot-i-fs);
   margin-right: 10px;
 }
 footer #bottom {
   grid-column-start: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  font-size: 17px;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: var(--bottom-fs);
+  text-align: right;
+  margin-right: 10vw;
 }
 footer #bottom p {
   margin-top: 10px;
 }
 
 #copy {
-  font-size: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  font-size: 7px;
+  align-self: end;
+  justify-self: end;
 }
 
 /*# sourceMappingURL=landing_page.css.map */
