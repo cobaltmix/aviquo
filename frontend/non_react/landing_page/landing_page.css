@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
   font-family: inherit;
+  transition: all 0.2s;
 }
 
 @media (min-width: 600px) {
@@ -56,6 +57,7 @@
     --discord-big: calc(15px + 1.5vw);
     --discord-text: calc(8px + 0.8vw);
     --discord-icon: 15%;
+    --discord-pad: 20px 50px;
     --foot-bg: rgb(235, 206, 221);
     --foot-pad-top: 10px;
     --foot-h4: calc(7px + 1vw);
@@ -63,6 +65,68 @@
     --foot-i-fs: 2.0vw;
     --foot-a-fs: 1.0vw;
     --bottom-fs: calc(8px + 0.6vw);
+  }
+}
+@media (max-width: 599px) {
+  :root {
+    --main-title-fs: calc(1.5vw + 25px);
+    --body-top-pad: 20px;
+    --body-back: rgb(219, 202, 214);
+    --body-width-1: 90%;
+    --head-pad: 20px 5vw;
+    --head-h3: calc(2vw + 7px);
+    --head-h3-big: calc(3vw + 10px);
+    --nav-form-width: 100%;
+    --nav-fs: calc(5px + 0.7vw);
+    --spon-marg-top: 30px;
+    --spon-height: calc(var(--spona-height) + var(--sponf-hegiht) + var(--spon-pad)*2 + var(--spon-between));
+    --spon-pad: 15px;
+    --spon-between: calc(2vw + 10px);
+    --spona-height: 50px;
+    --spona-font-size: calc(10px + 1vw);
+    --sponf-width: 18vw;
+    --sponf-hegiht: 25vw;
+    --sponf-pad: 3vw calc(5px + 4vw);
+    --sponf-marg-bot: 0;
+    --sponf-img-height: 80%;
+    --sponf-font-size: calc(10px + 1vw);
+    --quote-width: 90vw;
+    --quote-height: 80vw;
+    --quote-marg-top: 20px;
+    --quote-pad: 7vw 6vw;
+    --quote-normal-fs: calc(10px + 2.1vw);
+    --quote-smoool-fs: calc(10px + 1.0vw);
+    --quote-chngus-fs: calc(13px + 2.6vw);
+    --quote-line-hght: calc(25px + 2.5vw);
+    --intro-mg-top: 20px;
+    --intro-big: calc(15px + 4vw);
+    --intro-sml: calc(5px + 1.5vw);
+    --pb-width: 95%;
+    --pb-min-width: 0px;
+    --pb-pad: calc(5px + 0.5vw) calc(3px + 0.5vw) calc(4px + 1.0vw);
+    --pb-box-width: 25vw;
+    --pb-box-height: 90%;
+    --pb-h5: calc(6px + 0.8vw);
+    --pb-p: calc(5px + 0.5vw);
+    --pb-sep: calc(10px + 0.3vw);
+    --pb-a-width: calc(60% + 40px);
+    --pb-a-fs: calc(8px + 0.4vw);
+    --pb-a-pad: 10px calc(10px + 1.2vw);
+    --pb-big-scale-factor: 1.3;
+    --wip-h6: calc(8px + 0.8vw);
+    --wip-p: calc(8px + 1vw);
+    --discord-width: 90%;
+    --discord-big: calc(15px + 1.5vw);
+    --discord-text: calc(8px + 0.8vw);
+    --discord-icon: 20%;
+    --discord-pad: 10px;
+    --foot-bg: rgb(235, 206, 221);
+    --foot-pad-top: 10px;
+    --foot-h4: calc(7px + 3vw);
+    --foot-i-width: 7vw;
+    --foot-i-fs: 6.0vw;
+    --foot-a-fs: 4.0vw;
+    --bottom-fs: calc(7px + 1vw);
   }
 }
 body {
@@ -364,7 +428,7 @@ header nav form input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: var(--discord-pad);
   border: 2px solid #555;
   border-width: 2px 3px 3px 2px;
   border-color: #999 #555 #555 #999;
@@ -373,13 +437,12 @@ header nav form input {
   transform: translate(0, 0);
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s;
 }
 #discord a img {
   width: var(--discord-icon);
 }
 #discord a p {
-  width: 80%;
+  width: calc(90% - var(--discord-icon));
   color: black;
   font-size: var(--discord-text);
 }
