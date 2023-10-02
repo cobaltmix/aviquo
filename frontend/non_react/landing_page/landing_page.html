@@ -94,6 +94,9 @@
             <h6>works in progress:</h6>
             <p>academics, mental health, time managment</p>
         </section>
+        <section id="are-ya-ready-kids">
+            <h3 onclick="join_the_soviet_union()">Ready? Join the <span id="soviet">Soviet Union</span></h3>
+        </section>
         <section id="discord">
             <aside id="join-our-discord">
                 <h3>join our discord!</h3>
@@ -123,5 +126,48 @@
     </footer>
 </body>
 <script src="./landing_page/landing_page.js"></script>
+<script>
+    function join_the_soviet_union() {
+        document.getElementById('main-logo').scrollIntoView(scrollIntoViewOptions="smooth");
+        let bounce_interval = 0;
+        let bounce_value = 1;
+        let bounce_max = 1.2;
+        let bounce_direction = 1;
+        let bounce_element_on = 1;
+        let bounce_element_1 = document.getElementById("wl-email");
+        let bounce_element_2 = document.getElementById("wl-submit");
 
+        bounce_interval = setInterval(() => {
+            if (bounce_element_on == 1) {
+                if (bounce_direction == 1) {
+                    bounce_value += 0.01;
+                    if (bounce_value >= bounce_max) {
+                        bounce_direction = -1;
+                    }
+                } else if (bounce_direction == -1) {
+                    bounce_value -= 0.01;
+                    if (bounce_value <= 1) {
+                        bounce_direction = 1;
+                        bounce_element_on = 2;
+                    }
+                }
+                bounce_element_1.style.transform = "scale(" + bounce_value + ")";
+            }
+            if (bounce_element_on == 2) {
+                if (bounce_direction == 1) {
+                    bounce_value += 0.01;
+                    if (bounce_value >= bounce_max) {
+                        bounce_direction = -1;
+                    }
+                } else if (bounce_direction == -1) {
+                    bounce_value -= 0.01;
+                    if (bounce_value <= 1) {
+                        clearInterval(bounce_interval);
+                    }
+                }
+                bounce_element_2.style.transform = "scale(" + bounce_value + ")";
+            }
+        }, 10);
+    }
+</script>
 </html>

@@ -53,6 +53,9 @@
     --pb-big-scale-factor: 1.3;
     --wip-h6: calc(8px + 0.8vw);
     --wip-p: calc(8px + 1vw);
+    --ready-width: 50%;
+    --ready-marg-top: 80px;
+    --ready-fs: calc(10px + 1vw);
     --discord-width: calc(40vw + 300px);
     --discord-big: calc(15px + 1.5vw);
     --discord-text: calc(8px + 0.8vw);
@@ -115,6 +118,9 @@
     --pb-big-scale-factor: 1.3;
     --wip-h6: calc(8px + 0.8vw);
     --wip-p: calc(8px + 1vw);
+    --ready-width: 90%;
+    --ready-marg-top: 40px;
+    --ready-fs: calc(10px + 1vw);
     --discord-width: 90%;
     --discord-big: calc(15px + 1.5vw);
     --discord-text: calc(8px + 0.8vw);
@@ -411,13 +417,42 @@ header nav form input {
   font-size: var(--wip-p);
 }
 
+#are-ya-ready-kids {
+  width: var(--ready-width);
+  margin: auto;
+  margin-top: var(--ready-marg-top);
+  font-size: var(--ready-fs);
+  text-align: center;
+  color: #804c74;
+}
+#are-ya-ready-kids h3 {
+  margin: 0;
+  border: 3px outset #805c9c;
+  border-radius: 15px;
+  border-width: 0px 3px 3px 0px;
+  padding: 15px;
+  background-color: #ffcfcf;
+  transform: scale(1);
+  transition: all 0.05s;
+}
+#are-ya-ready-kids h3 #soviet {
+  color: red;
+}
+#are-ya-ready-kids h3:hover {
+  transform: scale(1.1);
+}
+#are-ya-ready-kids h3:active {
+  border-style: inset;
+  border-width: 3px 0px 0px 3px;
+}
+
 #discord {
   position: relative;
   display: flex;
   flex-direction: column;
   width: var(--discord-width);
   margin: auto;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 #discord aside {
   text-align: center;
