@@ -113,7 +113,7 @@
     --pb-p: calc(4px + 0.6vw);
     --pb-sep: calc(10px + 0.3vw);
     --pb-a-width: calc(60% + 40px);
-    --pb-a-fs: calc(7px + 0.4vw);
+    --pb-a-fs: calc(6px + 0.4vw);
     --pb-a-pad: 10px calc(10px + 1.2vw);
     --pb-big-scale-factor: 1.3;
     --wip-h6: calc(8px + 0.8vw);
