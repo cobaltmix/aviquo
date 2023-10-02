@@ -10,35 +10,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Poppins:wght@400&family=Poppins:wght@600&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Poppins:wght@400&family=Poppins:wght@600&family=Poppins:wght@500&family=Young+Serif&display=swap"
+        rel="stylesheet">
 </head>
 
 <body id="App">
     <header>
-        <div id="main-title">
-            <h1>aviquo.</h1>
-            <h3>
-                <span class="h3-bigger">your</span>
-                <span>high school</span>
-                <span>companion</span>
-            </h3>
-            <div style="height: 10px;"></div>
-        </div>
-        <div id="main-logo">
-            <div id="main-logo-inner">
-                <div class="logo-left-a"></div>
-                <div class="logo-right-a"></div>
-                <div class="logo-left-v"></div>
-                <div class="logo-o">
-                    <div class="logo-inner-o"></div>
-                </div>
-                <div class="logo-q"></div>
-            </div>
-        </div>
+        <img src="./logo.png" alt="AVQ" id="main-logo">
+        <h1>aviquo.</h1>
+        <h3>
+            <span class="h3-bigger">your</span>
+            <span>high school</span>
+            <span>companion</span>
+        </h3>
         <nav>
             <form action="">
-                <input type="email" name="email" placeholder="Email Address" />
-                <input type="submit" value="Join Waitlist" />
+                <input type="email" name="email" placeholder="Email Address" id="wl-email"/>
+                <input type="submit" value="Join Waitlist" id="wl-submit"/>
             </form>
         </nav>
     </header>
@@ -46,7 +35,6 @@
         <section id="sponsors">
             <aside>
                 <h5>backed by:</h5>
-                <div id="after"></div>
             </aside>
             <figure>
                 <img src="https://cdn.freebiesupply.com/images/large/2x/mit-logo-transparent.png">
